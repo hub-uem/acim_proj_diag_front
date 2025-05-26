@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-off-white text-zinc-800 dark:bg-midnight-blue dark:text-bleached-silk;
+    }
+}
