@@ -58,7 +58,7 @@ export default function QuestionnairePage() {
                         {modules.map((module) => (
                             <div
                                 key={module.id}
-                                className='flex flex-col p-6 border-2 bg-white dark:bg-midnight-blue border-gray-light dark:border-gunmetal hover:border-blue-darknut hover:-translate-y-3 transition transform duration-500 rounded-lg min-h-[300px]'
+                                className='flex flex-col p-6 border-2 bg-white dark:bg-midnight-blue border-gray-light dark:border-gunmetal hover:border-hover-glow hover:-translate-y-3 transition transform duration-500 rounded-lg min-h-[300px]'
                             >
                                 <h2 className='text-base md:text-xl font-semibold mb-2'>{module.title}</h2>
                                 <p className='mb-4 flex-grow text-gray-400'>{module.description}</p>

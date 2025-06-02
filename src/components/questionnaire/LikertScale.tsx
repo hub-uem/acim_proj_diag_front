@@ -24,8 +24,8 @@ export default function LikertScale({ numOptions, selectedOption, setSelectedOpt
                         return (
                             <div
                                 key={index}
-                                className={`flex items-center justify-center font-semibold rounded-full cursor-pointer hover:text-blue-darknut hover:border-blue-darknut 
-                            ${isSelected ? 'bg-blue-darknut' : 'border-2 border-zinc-400'}
+                                className={`flex items-center justify-center font-semibold rounded-full cursor-pointer hover:text-hover-glow hover:border-hover-glow 
+                            ${isSelected ? 'bg-hover-glow' : 'border-2 border-zinc-400'}
                         `}
                                 style={{
                                     width: `calc(3vw + ${size}px)`,

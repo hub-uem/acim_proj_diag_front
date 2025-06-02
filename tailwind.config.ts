@@ -25,7 +25,7 @@ export default {
         'black-wash': '#0D0D0D',
 
         // blue
-        'blue-darknut': '#058AFF',
+        'hover-glow': '#4bd360',
         'vivid-cerulean': '#05AFF2',
         'royal-blue': '#00247c',
 

@@ -13,10 +13,10 @@ export default function Questionnaire() {
                         className='flex flex-col max-w-4xl mx-auto space-y-8'
                     >
                         <div className='flex flex-col'>
-                            <span className='text-blue-darknut'>
+                            <span className='text-hover-glow'>
                                 Módulo
                             </span>
-                            <h1 className='text-4xl md:text-6xl text-blue-darknut font-bold mb-4'>
+                            <h1 className='text-4xl md:text-6xl text-hover-glow font-bold mb-4'>
                                 Diagnóstico Organizacional
                             </h1>
                             <p className='text-zinc-300 mb-6'>

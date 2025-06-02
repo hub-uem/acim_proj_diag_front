@@ -33,7 +33,7 @@ export default function Input({
                     {children}
                 </label>
                 {link && (
-                    <div className='text-sm text-blue-darknut font-medium'>
+                    <div className='text-sm text-hover-glow font-medium'>
                         <Link
                             className='font-semibold'
                             href={link.linkUrl}
@@ -46,7 +46,7 @@ export default function Input({
             <div className='mt-2'>
                 <input
                     id={labelId}
-                    className='block w-full rounded-md px-1.5 py-1.5 text-black-wash dark:text-bleached-silk shadow-md focus:ring-2 focus:ring-inset focus:to-blue-darknut sm:text-sm sm:leading-6'
+                    className='block w-full rounded-md px-1.5 py-1.5 text-black-wash dark:text-bleached-silk shadow-md focus:ring-2 focus:ring-inset focus:to-hover-glow sm:text-sm sm:leading-6'
                     name={labelId}
                     type={type}
                     onChange={onChange}

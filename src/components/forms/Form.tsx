@@ -48,7 +48,7 @@ export default function Form({
             <div>
                 <button
                     type='submit'
-                    className='flex w-full justify-center rounded-md bg-blue-darknut py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-vivid-cerulean focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-darknut'
+                    className='flex w-full justify-center rounded-md bg-hover-glow py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-vivid-cerulean focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hover-glow'
                     disabled={isLoading}
                 >
                     {isLoading ? <Spinner sm /> : `${btnText}`}

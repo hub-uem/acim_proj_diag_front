@@ -20,7 +20,7 @@ export default function About() {
                 />
             </div>
             <div className='flex flex-col items-center w-full space-y-8 p-4 md:p-8'>
-                <h1 className='text-5xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-darknut via-purple-500 to-pink-500'>
+                <h1 className='text-5xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-hover-glow via-purple-500 to-pink-500'>
                     Quem Somos
                 </h1>
                 <p className='text-center max-w-4xl'>
@@ -39,7 +39,7 @@ export default function About() {
                     />
                 </div>
                 <div className='flex flex-col py-4 md:p-8 w-full'>
-                    <span className='text-4xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-darknut via-purple-500 to-pink-500'>
+                    <span className='text-4xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-hover-glow via-purple-500 to-pink-500'>
                         Nossa Missão
                     </span>
                     <p>
@@ -65,7 +65,7 @@ export default function About() {
                     />
                 </div>
                 <div className='flex flex-col py-4 md:p-8 w-full'>
-                    <h1 className='text-4xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-darknut via-purple-500 to-pink-500'>
+                    <h1 className='text-4xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-hover-glow via-purple-500 to-pink-500'>
                         Nossa História
                     </h1>
                     <p>

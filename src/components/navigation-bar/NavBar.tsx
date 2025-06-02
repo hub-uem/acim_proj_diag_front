@@ -59,7 +59,7 @@ export default function Navbar() {
                     }}
                 >
                     {item.name}
-                    <div className='absolute bottom-0 left-0 bg-blue-darknut h-[2px] w-0 group-hover:w-full transition-all duration-500'></div>
+                    <div className='absolute bottom-0 left-0 bg-hover-glow h-[2px] w-0 group-hover:w-full transition-all duration-500'></div>
                 </NavLink>
             ))}
         </>
@@ -85,7 +85,7 @@ export default function Navbar() {
             <NavLink
                 isMobile={isMobile}
                 href='/authentication/login'
-                className='bg-blue-darknut text-bleached-silk py-2 px-4 hover:bg-vivid-cerulean rounded-md'
+                className='bg-hover-glow text-bleached-silk py-2 px-4 hover:bg-vivid-cerulean rounded-md'
                 onClick={() => {
                     if (close) close();
                 }}
@@ -98,7 +98,7 @@ export default function Navbar() {
     return (
         <Disclosure
             as='nav'
-            className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-midnight-blue/90 border-b border-white dark:border-blue-darknut py-2' : 'bg-midnight-blue py-4'
+            className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-midnight-blue/90 border-b border-white dark:border-hover-glow py-2' : 'bg-midnight-blue py-4'
                 } text-zinc-100`}
         >
             {({ open, close }) => (

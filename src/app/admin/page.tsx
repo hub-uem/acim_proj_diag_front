@@ -17,16 +17,16 @@ export default function Page() {
         <>
             <main className='min-h-screen p-4 md:p-12'>
                 <div className='flex flex-col items-center space-y-16'>
-                    <h1 className='max-w-4xl mx-auto text-4xl md:text-6xl font-bold text-center text-blue-darknut'>
+                    <h1 className='max-w-4xl mx-auto text-4xl md:text-6xl font-bold text-center text-hover-glow'>
                         Painel de Administração
                     </h1>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl'>
                         {modules.map((module) => (
                             <div
                                 key={module.id}
-                                className='flex flex-col p-6 border-2 border-gunmetal hover:border-blue-darknut hover:-translate-y-3 transition transform duration-500 rounded-lg min-h-[300px]'
+                                className='flex flex-col p-6 border-2 border-gunmetal hover:border-hover-glow hover:-translate-y-3 transition transform duration-500 rounded-lg min-h-[300px]'
                             >
-                                <h2 className='text-center text-xl md:text-2xl font-semibold text-blue-darknut mb-2'>{module.title}</h2>
+                                <h2 className='text-center text-xl md:text-2xl font-semibold text-hover-glow mb-2'>{module.title}</h2>
                                 <p className='mb-4 flex-grow text-gray-400'>{module.description}</p>
                                 <Link
                                     href={`/admin/${module.id}`}
