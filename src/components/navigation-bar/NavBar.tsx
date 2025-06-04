@@ -85,7 +85,7 @@ export default function Navbar() {
             <NavLink
                 isMobile={isMobile}
                 href='/authentication/login'
-                className='bg-hover-glow text-bleached-silk py-2 px-4 hover:bg-vivid-cerulean rounded-md'
+                className='bg-teal-primary text-bleached-silk py-2 px-4 hover:bg-vivid-cerulean rounded-md dark:hover:bg-teal-primary-opc'
                 onClick={() => {
                     if (close) close();
                 }}
@@ -98,7 +98,7 @@ export default function Navbar() {
     return (
         <Disclosure
             as='nav'
-            className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-midnight-blue/90 border-b border-white dark:border-hover-glow py-2' : 'bg-midnight-blue py-4'
+            className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-teal/90 border-b border-white dark:border-teal py-2' : 'bg-teal py-4'
                 } text-zinc-100`}
         >
             {({ open, close }) => (
@@ -121,7 +121,7 @@ export default function Navbar() {
                                     Projeto Diagnóstico
                                 </NavLink>
                             </div>
-                            <div className='hidden md:block md:space-x-5 lg:space-x-12'>
+                            <div className='hidden md:block md:space-x-5 lg:space-x-12 bg'>
                                 {navLinks(false)}
                             </div>
                             <div className='hidden md:block'>

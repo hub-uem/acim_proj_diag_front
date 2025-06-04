@@ -3,8 +3,8 @@ import { Instagram } from "lucide-react";
 export default function Footer() {
     return (
         <>
-            <footer className="w-full pt-8 p-2 bg-off-white dark:bg-midnight-blue border-t border-midnight-blue dark:border-hover-glow text-center">
-                <a className="text-hover-glow">
+            <footer className="w-full pt-8 p-2 bg-off-white dark:bg-teal border-t border-midnight-blue dark:border-teal text-center">
+                <a className="text-teal-primary hover-glow">
                     acim@acim.com.br
                 </a>
                 <p className="my-5 leading-normal">
@@ -15,7 +15,7 @@ export default function Footer() {
                     Maringá - PR
                 </p>
                 <nav>
-                    <a className="inline-flex items-center hover:text-hover-glow">
+                    <a className=" text-teal-primary inline-flex items-center hover:text-hover-glow">
                         <Instagram />
                     </a>
                 </nav>

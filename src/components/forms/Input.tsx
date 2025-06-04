@@ -46,7 +46,7 @@ export default function Input({
             <div className='mt-2'>
                 <input
                     id={labelId}
-                    className='block w-full rounded-md px-1.5 py-1.5 text-black-wash dark:text-bleached-silk shadow-md focus:ring-2 focus:ring-inset focus:to-hover-glow sm:text-sm sm:leading-6'
+                    className='block w-full rounded-md px-1.5 py-1.5 text-black-wash dark:bg-off-white dark:text-bleached-silk shadow-md focus:ring-40 focus:ring-inset focus:to-hover-glow sm:text-sm sm:leading-6'
                     name={labelId}
                     type={type}
                     onChange={onChange}

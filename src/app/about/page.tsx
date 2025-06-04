@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function About() {
     return (
-        <div className='flex flex-col w-full space-y-8 md:space-y-12 pb-12'>
+        <div className='flex flex-col w-full space-y-8 md:space-y-12 pb-12 bg-teal-secundary'>
             <div className="relative flex flex-col w-full h-72 sm:h-80 md:h-104 lg:h-[560px] z-0">
                 <Image
                     src="/about-us/acim-evento.jpeg"
@@ -20,10 +20,10 @@ export default function About() {
                 />
             </div>
             <div className='flex flex-col items-center w-full space-y-8 p-4 md:p-8'>
-                <h1 className='text-5xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-hover-glow via-purple-500 to-pink-500'>
+                <h1 className='text-5xl sm:text-6xl font-bold dark:text-teal-primary'>
                     Quem Somos
                 </h1>
-                <p className='text-center max-w-4xl'>
+                <p className='text-center max-w-4xl text-bleached-silk'>
                     A ACIM é a Casa do Empreendedor em Maringá. Com mais de 70 anos de atuação, hoje contamos com mais de 5.000 empresas unidas pelo propósito do associativismo.                </p>
             </div>
             <div className='flex flex-col md:flex-row w-full items-center p-4 md:p-8 md:space-x-8'>
@@ -39,12 +39,10 @@ export default function About() {
                     />
                 </div>
                 <div className='flex flex-col py-4 md:p-8 w-full'>
-                    <span className='text-4xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-hover-glow via-purple-500 to-pink-500'>
+                    <span className='text-4xl lg:text-6xl font-bold mb-10 dark:text-teal-primary'>
                         Nossa Missão
                     </span>
-                    <p>
-
-
+                    <p className='text-bleached-silk'>
                         Somos ambiciosos quando se trata de trabalhar para impulsionar o empreendedorismo em Maringá e trabalhamos seguindo a visão de “estar entre as melhores associações empresariais do país na geração de valor aos seus associados e comunidade, articuladora de negócios sustentáveis, com visão de futuro e representação legítima junto a sociedade.”
                     </p>
                     <p>
@@ -65,10 +63,10 @@ export default function About() {
                     />
                 </div>
                 <div className='flex flex-col py-4 md:p-8 w-full'>
-                    <h1 className='text-4xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-hover-glow via-purple-500 to-pink-500'>
+                    <h1 className='text-4xl lg:text-6xl font-bold mb-10 dark:text-teal-primary'>
                         Nossa História
                     </h1>
-                    <p>
+                    <p className='text-bleached-silk'>
                         No ano de 1953, quando Maringá tinha apenas 6 anos desde sua fundação, surgiu a ACIM, como um pequeno grupo de empresários. Tendo o empresário Américo Marques Dias como primeiro presidente, a associação foi formada para atuar como uma entidade que daria voz, de maneira organizada, para as insatisfações da classe empresarial de Maringá.
                     </p>
                     <p>

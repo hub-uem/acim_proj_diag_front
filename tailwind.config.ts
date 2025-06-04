@@ -15,27 +15,36 @@ export default {
       },
       colors: {
         // white 
-        'bleached-silk': '#F2F2F2',
-        'off-white': '#f4f2ee',
+        'bleached-silk': ' #F2F2F2',
+        'off-white': 'rgba(244, 242, 238, 0.46)',
 
         // gray
-        'gray-light': '#D9D9D9',
+        'gray-light': ' #D9D9D9',
 
         // black
-        'black-wash': '#0D0D0D',
+        'black-wash': ' #0D0D0D',
 
         // blue
-        'hover-glow': '#4bd360',
-        'vivid-cerulean': '#05AFF2',
-        'royal-blue': '#00247c',
+        'hover-glow': ' #4bd360',
+        'vivid-cerulean': ' #05AFF2',
+        'royal-blue': ' #00247c',
 
         // dark blue
-        'gunmetal': '#121826',
-        'dark-navy-blue': '#0F1117',
-        'midnight-blue': '#030712',
+        'gunmetal': ' #121826',
+        'dark-navy-blue': ' #0F1117',
+        'midnight-blue': ' #030712',
 
         //green
-        'turquoise': '#2bfdbe',
+        'turquoise': ' #2bfdbe', 
+
+        // light mint green
+        'mint-green': ' #96f0a0', 
+
+        // teal
+        'teal': 'rgb(2, 46, 46)', 
+        'teal-primary': ' #04bc9c', 
+        'teal-primary-opc': 'rgba(4, 188, 157, 0.53)', 
+        'teal-secundary': ' rgb(3, 68, 68)',
       },
       opacity: {
         '99': '0.99',

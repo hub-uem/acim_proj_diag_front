@@ -24,7 +24,7 @@ export default function RegisterForm() {
 			required: true,
 		},
 		{
-			labelText: 'Nome de Usuário',
+			labelText: 'Nome completo',
 			labelId: 'username',
 			type: 'text',
 			value: username,
