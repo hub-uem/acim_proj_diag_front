@@ -8,6 +8,7 @@ import { useAppSelector, useAppDispatch } from '@/redux/hooks';
 import { useLogoutMutation } from '@/redux/features/authApiSlice';
 import { logout as setLogout } from '@/redux/features/authSlice';
 import NavLink from './NavLink';
+import Image from 'next/image';
 
 export default function Navbar() {
     const pathname = usePathname() || '';
@@ -109,7 +110,17 @@ export default function Navbar() {
                                 {open ? <X size={24} /> : <Menu size={24} />}
                             </DisclosureButton>
                         </div>
-                        <div className='max-w-5xl mx-auto flex flex-1 p-3 sm:p-4 items-center justify-center md:justify-between'>
+                        <div className='max-w-6xl mx-auto flex flex-1 sm:p-4 items-center justify-center md:justify-between'>
+                            <Image
+                                src="/home/logo-acim.webp"
+                                alt="Logo ACIM"
+                                width={120}
+                                height={60}
+                                style={{
+                                    objectFit: "cover",
+                                    objectPosition: "50% 40%",
+                                }}
+                            />
                             <div className='flex flex-shrink-0'>
                                 <NavLink
                                     href='/'

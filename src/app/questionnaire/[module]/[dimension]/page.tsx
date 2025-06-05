@@ -86,13 +86,13 @@ export default function Page() {
                         <NavigationButton onClick={goToPrevious} position='left' size='sm' />
                     )}
                 </div>
-                <h2 className='text-2xl sm:text-3xl md:text-5xl font-extrabold text-royal-blue dark:text-hover-glow text-center'>
+                <h2 className='text-2xl sm:text-3xl md:text-5xl font-extrabold text-royal-blue dark:text-gray-light text-center'>
                     {currentDimension.title}
                 </h2>
             </div>
             <p className='mb-16 text-sm md:text-xl text-justify'>{currentDimension.description}</p>
             <button
-                className='px-6 py-3 bg-hover-glow rounded-md text-bleached-silk'
+                className='px-6 py-3 bg-teal-primary hover:bg-teal-primary-opc rounded-md text-bleached-silk'
                 onClick={goToNext}
             >
                 Iniciar
@@ -183,7 +183,7 @@ export default function Page() {
 
         return (
             <button
-                className={`rounded-full border ${sizeClasses[size]} border-zinc-400 text-zinc-400 hover:border-hover-glow hover:text-hover-glow`}
+                className={`rounded-full border ${sizeClasses[size]} border-zinc-400 text-zinc-400 hover:border-teal-primary hover:text-teal-primary-opc`}
                 onClick={onClick}
                 disabled={disabled}
             >
@@ -193,8 +193,8 @@ export default function Page() {
     };
 
     return (
-        <div className='min-h-screen p-4 pt-32 sm:p-8 sm:pt-36 md:p-12 md:pt-40 bg-bleached-silk dark:bg-dark-navy-blue'>
-            <div className='flex flex-col p-4 max-w-4xl mx-auto bg-off-white dark:bg-gunmetal rounded-md border border-royal-blue dark:border-hover-glow'>
+        <div className='min-h-screen p-4 pt-32 sm:p-8 sm:pt-36 md:p-12 md:pt-40 bg-bleached-silk dark:bg-teal-secundary'>
+            <div className='flex flex-col p-4 max-w-4xl mx-auto bg-off-white dark:bg-teal rounded-md border border-royal-blue dark:border-black-wash'>
                 {showSubmit ? <SubmitView /> : (showDescription ? <DescriptionView /> : <QuestionView />)}
             </div>
         </div>

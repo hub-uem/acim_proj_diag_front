@@ -3,20 +3,17 @@ import Link from 'next/link';
 export default function Questionnaire() {
     return (
         <>
-            <div className='min-h-screen'>
+            <div className='min-h-screen bg-gradient-to-r from-teal via-teal-primary-opc to-teal-secundary flex items-center justify-center'>
                 <div
-                    className='pt-12 px-4 pb-20 md:p-16 md:pb-36 bg-gradient-to-r from-[#041024] via-midnight-blue to-[#041024]'
-                    style={{
-                        clipPath: 'polygon(0 0, 100% 0, 100% 90%, 0% 100%)',
-                    }}>
+                    className='pt-12 px-4 pb-20 md:p-16 md:pb-36 '>
                     <div
                         className='flex flex-col max-w-4xl mx-auto space-y-8'
                     >
                         <div className='flex flex-col'>
-                            <span className='text-hover-glow'>
+                            <span className='text-teal-primary'>
                                 Módulo
                             </span>
-                            <h1 className='text-4xl md:text-6xl text-hover-glow font-bold mb-4'>
+                            <h1 className='text-4xl md:text-6xl text-bleached-silk font-bold mb-4'>
                                 Diagnóstico Organizacional
                             </h1>
                             <p className='text-zinc-300 mb-6'>
@@ -26,35 +23,28 @@ export default function Questionnaire() {
                             </p>
                         </div>
 
-                        <div className='flex w-max h-max space-x-2 mx-auto items-center md:px-4 md:py-2 bg-gunmetal rounded-md border border-vivid-cerulean'                       >
+                        <div className='flex w-max h-max space-x-2 mx-auto items-center md:px-4 md:py-2 bg-gunmetal rounded-md border border-teal-primary'>
                             <a className='text-bleached-silk'>
                                 Número de Questões
                             </a>
-                            <div className='w-[1px] h-12 bg-zinc-500'></div>
+                            <div className='w-[1px] h-12 bg-teal-primary'></div>
                             <a className='text-bleached-silk'>
                                 Tempo Estimado
                             </a>
-                            <div className='hidden md:block w-[1px] h-12 bg-zinc-500'></div>
+                            <div className='hidden md:block w-[1px] h-12 bg-teal-primary'></div>
                             <Link
                                 href='/questionnaire/x/Diagnóstico Organizacional'
-                                className='hidden md:block w-fit md:px-4 md:py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600'>
+                                className='hidden md:block w-fit md:px-4 md:py-2 bg-teal-primary text-white font-semibold rounded-md hover:bg-teal-primary-opc'>
                                 Iniciar Questionário
                             </Link>
                         </div>
-
-
-                        <Link
-                            href='/questionnaire/x/Diagnóstico Organizacional'
-                            className='md:hidden mx-auto w-fit px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600'>
-                            Iniciar Questionário
-                        </Link>
                     </div>
                 </div>
-                <div className='p-12 max-w-4xl mx-auto'>
+                {/* <div className='p-12 max-w-4xl mx-auto'>
                     <h1 className='text-2xl'>
                         Conheça nossos outros questionários:
                     </h1>
-                </div>
+                </div> */}
             </div >
         </>
     );
