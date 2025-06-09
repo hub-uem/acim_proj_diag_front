@@ -36,8 +36,13 @@ O sistema visa facilitar o processo de coleta de dados e geração de relatório
    ```bash
    pnpm install
    ```
+
+4. Crie um .env.local e adicione:
+   ```bash
+   NEXT_PUBLIC_HOST=http://localhost:8000
+   ```
    
-4. Inicie o servidor de desenvolvimento:
+5. Inicie o servidor de desenvolvimento:
    ```bash
    pnpm dev
    ```
