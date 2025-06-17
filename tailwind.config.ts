@@ -24,10 +24,8 @@ export default {
         // black
         'black-wash': ' #0D0D0D',
 
-        // blue
+        // green
         'hover-glow': ' #4bd360',
-        'vivid-cerulean': ' #05AFF2',
-        'royal-blue': ' #00247c',
 
         // dark blue
         'gunmetal': ' #121826',
@@ -45,6 +43,7 @@ export default {
         'teal-primary': ' #04bc9c', 
         'teal-primary-opc': 'rgba(4, 188, 157, 0.53)', 
         'teal-secundary': ' rgb(3, 68, 68)',
+        'teal-secundary-opc': ' rgba(4, 68, 68, 0.88)',
       },
       opacity: {
         '99': '0.99',

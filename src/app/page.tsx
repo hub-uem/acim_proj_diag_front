@@ -44,7 +44,7 @@ export default function Home() {
 
     return (
         <>
-            <div className='min-h-screen relative pb-20 bg-teal-secundary'>
+            <div className='min-h-screen relative pb-20 bg-bleached-silk dark:bg-teal-secundary'>
                 <div className='h-[556px] w-full relative flex bg-black'>
                     <Image
                         src='/home/building.jpg'
@@ -68,7 +68,7 @@ export default function Home() {
                         </p>
                         <Link
                             href='/questionnaire'
-                            className='w-fit inline-block px-6 py-3 font-bold text-bleached-silk bg-hover-glow rounded-lg shadow-md dark:hover:bg-teal-primary-opc transition md-4 dark:bg-teal-primary'>
+                            className='w-fit inline-block px-6 py-3 font-bold text-bleached-silk bg-teal-primary rounded-lg shadow-md hover:bg-teal-primary-opc transition md-4 dark:bg-teal-primary'>
                             Acessar o Questionário
                         </Link>
                     </div>
@@ -76,7 +76,7 @@ export default function Home() {
                 <div className="w-full bg-white dark:bg-teal">
                     <div className="flex flex-col lg:flex-row items-center justify-center py-24 px-12 lg:px-28 lg:space-x-20">
                         <div className="flex flex-col w-full">
-                            <h1 className="mb-12 text-4xl sm:text-5xl text-center text-royal-blue dark:text-bleached-silk font-bold">
+                            <h1 className="mb-12 text-4xl sm:text-5xl text-center text-teal-primary dark:text-bleached-silk font-bold">
                                 Desenvolvido por Empresários Especialistas
                             </h1>
                             <div className="text-justify py-8">
@@ -104,7 +104,7 @@ export default function Home() {
                 </div>
 
                 <div className='p-12 flex flex-col justify-center items-center bg-bleached-silk dark:bg-teal-secundary'>
-                    <h1 className='mb-12 sm:text-5xl text-royal-blue dark:text-bleached-silk font-bold'>O que Avaliamos</h1>
+                    <h1 className='mb-12 sm:text-5xl text-teal-primary dark:text-bleached-silk font-bold'>O que Avaliamos</h1>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto justify-items-center place-items-center py-12 gap-8'>
                         {sections.map((section) => (
                             <div

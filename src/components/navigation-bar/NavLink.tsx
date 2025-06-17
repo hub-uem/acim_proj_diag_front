@@ -26,8 +26,8 @@ export default function NavLink({
         rest.className,
         'rounded-md font-semibold',
         {
-            'hover:text-hover-glow': isNavItem,
-            'text-hover-glow': isSelected,
+            'dark:hover:text-teal-primary hover:text-teal-secundary': isNavItem,
+            'text-teal-secundary dark:hover:text-teal-primary dark:text-teal-primary': isSelected,
             'text-2xl sm:text-3xl': isBanner,
         }
     );

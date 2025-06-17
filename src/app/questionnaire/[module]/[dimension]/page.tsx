@@ -92,7 +92,7 @@ export default function Page() {
             </div>
             <p className='mb-16 text-sm md:text-xl text-justify'>{currentDimension.description}</p>
             <button
-                className='px-6 py-3 bg-teal-primary hover:bg-teal-primary-opc rounded-md text-bleached-silk'
+                className='px-6 py-3 bg-teal hover:bg-teal-secundary-opc dark:bg-teal-primary dark:hover:bg-teal-primary-opc rounded-md text-bleached-silk'
                 onClick={goToNext}
             >
                 Iniciar
@@ -102,7 +102,7 @@ export default function Page() {
 
     const QuestionView = () => (
         <div>
-            <div className='text-center text-zinc-400'>
+            <div className='text-center text-teal dark:text-bleached-silk'>
                 Questão {currentQuestionIndex + 1} de {totalQuestionsInDimension}
             </div>
             <div className='py-16 px-3 sm:px-8 md:px-12 max-w-4xl mx-auto'>
@@ -183,7 +183,7 @@ export default function Page() {
 
         return (
             <button
-                className={`rounded-full border ${sizeClasses[size]} border-zinc-400 text-zinc-400 hover:border-teal-primary hover:text-teal-primary-opc`}
+                className={`rounded-full border ${sizeClasses[size]} border-teal text-teal hover:border-teal-secundary hover:text-teal-secundary dark:border-bleached-silk dark:text-bleached-silk dark:hover:border-hover-glow dark:hover:text-hover-glow`}
                 onClick={onClick}
                 disabled={disabled}
             >
@@ -194,7 +194,7 @@ export default function Page() {
 
     return (
         <div className='min-h-screen p-4 pt-32 sm:p-8 sm:pt-36 md:p-12 md:pt-40 bg-bleached-silk dark:bg-teal-secundary'>
-            <div className='flex flex-col p-4 max-w-4xl mx-auto bg-off-white dark:bg-teal rounded-md border border-royal-blue dark:border-black-wash'>
+            <div className='flex flex-col p-4 max-w-4xl mx-auto bg-teal-primary dark:bg-teal rounded-md border border-teal dark:border-black-wash'>
                 {showSubmit ? <SubmitView /> : (showDescription ? <DescriptionView /> : <QuestionView />)}
             </div>
         </div>

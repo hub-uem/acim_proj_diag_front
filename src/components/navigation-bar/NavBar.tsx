@@ -60,7 +60,7 @@ export default function Navbar() {
                     }}
                 >
                     {item.name}
-                    <div className='absolute bottom-0 left-0 bg-hover-glow h-[2px] w-0 group-hover:w-full transition-all duration-500'></div>
+                    <div className='absolute bottom-0 left-0 bg-teal-secundary dark:bg-teal-primary h-[2px] w-0 group-hover:w-full transition-all duration-500'></div>
                 </NavLink>
             ))}
         </>
@@ -86,7 +86,7 @@ export default function Navbar() {
             <NavLink
                 isMobile={isMobile}
                 href='/authentication/login'
-                className='bg-teal-primary text-bleached-silk py-2 px-4 hover:bg-vivid-cerulean rounded-md dark:hover:bg-teal-primary-opc'
+                className='bg-teal-secundary dark:bg-teal-primary text-bleached-silk py-2 px-4 hover:bg-teal-secundary-opc rounded-md dark:hover:bg-teal-primary-opc'
                 onClick={() => {
                     if (close) close();
                 }}
@@ -99,7 +99,7 @@ export default function Navbar() {
     return (
         <Disclosure
             as='nav'
-            className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-teal/90 border-b border-white dark:border-teal py-2' : 'bg-teal py-4'
+            className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-teal-primary/90 dark:bg-teal/90 border-b border-teal-primary dark:border-teal py-2' : 'bg-teal-primary dark:bg-teal py-4'
                 } text-zinc-100`}
         >
             {({ open, close }) => (
