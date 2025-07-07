@@ -31,10 +31,10 @@ export default function Questionnaire() {
                             <a className='text-bleached-silk'>
                                 Tempo Estimado
                             </a>
-                            <div className='hidden md:block w-[1px] h-12 bg-teal-primary'></div>
+                            <div className='w-[1px] h-12 bg-transparent md:bg-teal-primary'></div>
                             <Link
                                 href='/questionnaire/x/Diagnóstico Organizacional'
-                                className='hidden md:block w-fit md:px-4 md:py-2 bg-teal-primary text-white font-semibold rounded-md hover:bg-teal-primary-opc'>
+                                className='block w-fit md:w-fit py-1 px-4 bg-teal-primary text-white font-semibold rounded-md hover:bg-teal-primary-opc'>
                                 Iniciar Questionário
                             </Link>
                         </div>

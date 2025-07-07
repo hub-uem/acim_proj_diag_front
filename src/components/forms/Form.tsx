@@ -12,6 +12,7 @@ interface Config {
         linkUrl: string;
     };
     required?: boolean;
+    options?: string[];
 }
 
 interface Props {
@@ -40,6 +41,7 @@ export default function Form({
                     value={input.value}
                     link={input.link}
                     required={input.required}
+                    options={input.options} 
                 >
                     {input.labelText}
                 </Input>
