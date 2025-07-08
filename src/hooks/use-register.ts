@@ -11,13 +11,13 @@ export default function useRegister() {
         email: '',
         username: '',
         cnpj: '',
-        company_size: '',
-        sector: '',
+        porte: '',
+        setor: '',
         password: '',
         re_password: '',
     });
 
-    const { email, username, cnpj, company_size, sector, password, re_password } = formData;
+    const { email, username, cnpj, porte, setor, password, re_password } = formData;
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -44,8 +44,8 @@ export default function useRegister() {
         email,
         username,
         cnpj,
-        company_size,
-        sector,
+        porte,
+        setor,
         password,
         re_password,
         isLoading,

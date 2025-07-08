@@ -8,8 +8,8 @@ export default function RegisterForm() {
 		email,
 		username,
 		cnpj,
-		company_size,
-		sector,
+		porte,
+		setor,
 		password,
 		re_password,
 		isLoading,
@@ -41,9 +41,9 @@ export default function RegisterForm() {
 		},
 		{
 			labelText: 'Porte da empresa',
-			labelId: 'company_size',
+			labelId: 'porte',
 			type: 'select',
-			value: company_size,
+			value: porte,
 			required: true,
 			options: [
 				'Profissional liberal',
@@ -56,9 +56,9 @@ export default function RegisterForm() {
 		},
 		{
 			labelText: 'Setor da empresa',
-			labelId: 'sector',
+			labelId: 'setor',
 			type: 'select',
-			value: sector,
+			value: setor,
 			required: true,
 			options: [
 				'Setor A',
