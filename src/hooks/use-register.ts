@@ -19,16 +19,16 @@ export default function useRegister() {
 
     const { email, username, cnpj, porte, setor, password, re_password } = formData;
 
-    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-
-        setFormData({ ...formData, [name]: value });
-    };
+    const onChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+};
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        console.log(formData);
 
-        register({ email, username, cnpj, password, re_password })
+        register(formData)
             .unwrap()
             .then(() => {
                 toast.success('Por favor verifique seu email para ativar sua conta');
@@ -36,7 +36,7 @@ export default function useRegister() {
             })
             .catch((error) => {
                 console.error('Registration error:', error);
-                toast.error('Failha ao registrar conta');
+                toast.error('Falha ao registrar conta');
             });
     };
 

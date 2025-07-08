@@ -2,6 +2,11 @@ import { ChangeEvent, FormEvent } from 'react';
 import { Input } from '@/components/forms';
 import { Spinner } from '@/components/common';
 
+interface Option {
+    label: string;
+    value: string;
+}
+
 interface Config {
     labelText: string;
     labelId: string;
@@ -12,14 +17,14 @@ interface Config {
         linkUrl: string;
     };
     required?: boolean;
-    options?: string[];
+    options?: Option[];
 }
 
 interface Props {
     config: Config[];
     isLoading: boolean;
     btnText: string;
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     onSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 

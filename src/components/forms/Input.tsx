@@ -1,6 +1,12 @@
 import { ChangeEvent } from 'react';
 import Link from 'next/link';
 
+interface Option {
+    label: string;
+    value: string;
+}
+
+
 interface Props {
     labelId: string;
     type: string;
@@ -12,7 +18,7 @@ interface Props {
         linkUrl: string;
     };
     required?: boolean;
-    options?: string[]; 
+    options?: Option[]; 
 }
 
 export default function Input({
@@ -57,9 +63,9 @@ export default function Input({
                     >
                         <option value="">Selecione...</option>
                         {options.map((opt) => (
-                        <option key={opt} value={opt}>
-                            {opt}
-                        </option>
+                            <option key={opt.value} value={opt.value}>
+                                {opt.label}
+                            </option>
                         ))}
                     </select>
                 ) : (

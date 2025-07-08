@@ -46,12 +46,12 @@ export default function RegisterForm() {
 			value: porte,
 			required: true,
 			options: [
-				'Profissional liberal',
-				'MEI',
-				'EPP',
-				'ME',
-				'Média',
-				'Grande'
+				{ label: 'Profissional liberal', value: 'PL' },
+				{ label: 'MEI', value: 'MEI' },
+				{ label: 'EPP', value: 'EPP' },
+				{ label: 'ME', value: 'ME' },
+				{ label: 'Média', value: 'MEDIA' },
+				{ label: 'Grande', value: 'GRANDE' }
 			],
 		},
 		{
@@ -61,9 +61,9 @@ export default function RegisterForm() {
 			value: setor,
 			required: true,
 			options: [
-				'Setor A',
-				'Setor B',
-				'Setor C',
+				{ label: 'Setor A', value: 'Setor A' },
+				{ label: 'Setor B', value: 'Setor B' },
+				{ label: 'Setor C', value: 'Setor C' },
 			],
 		},
 		{

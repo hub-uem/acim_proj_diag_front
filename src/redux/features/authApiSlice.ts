@@ -4,8 +4,8 @@ interface User {
     email: string;
     username: string;
     cnpj: string;
-    company_size: string;
-    sector: string;
+    porte: string;
+    setor: string;
 }
 
 interface CreateUserResponse {
@@ -30,14 +30,14 @@ const authApiSlice = apiSlice.injectEndpoints({
                 email,
                 username,
                 cnpj,
-                company_size,
-                sector,
+                porte,
+                setor,
                 password,
                 re_password,
             }) => ({
                 url: '/users/',
                 method: 'POST',
-                body: { email, username, cnpj, company_size, sector, password, re_password },
+                body: { email, username, cnpj, porte, setor, password, re_password },
             }),
         }),
         verify: builder.mutation({

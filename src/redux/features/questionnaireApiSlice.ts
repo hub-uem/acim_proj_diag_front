@@ -10,7 +10,6 @@ interface Dimensao {
     id: number;
     dimensaoTitulo: string;
     descricao: string;
-    tipo: 'OBRIGATORIO' | 'COMERCIO' | 'SERVICO' | 'INDUSTRIA';
     perguntas: Question[];
 }
 
