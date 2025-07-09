@@ -41,7 +41,7 @@ export default function Input({
                     {children}
                 </label>
                 {link && (
-                    <div className='text-sm text-hover-glow font-medium'>
+                    <div className='text-sm text-teal font-medium'>
                         <Link
                             className='font-semibold'
                             href={link.linkUrl}

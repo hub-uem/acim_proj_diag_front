@@ -46,9 +46,9 @@ export default function Dashboard(){
   };
 
   return (
-    <div className='flex flex-col w-full space-y-8 md:space-y-12 p-12'>
+    <div className='flex flex-col w-full space-y-8 md:space-y-12 pt-4 pb-40'>
       
-      <div className='p-4 m-10 text-center'>
+      <div className='pt-4 text-center'>
         {/* <h1 className="text-4xl font-bold text-royal-blue border-b-2 border-royal-blue pb-2">
           Gráfico de Evolução
         </h1>
@@ -77,7 +77,7 @@ export default function Dashboard(){
               </option>
             ))}
           </select>
-           <button onClick={handleSearch} className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" > Buscar Relatório  </button>
+           <button onClick={handleSearch} className="px-4 py-2 bg-teal-primary text-white rounded-md hover:bg-teal-secundary-opc" > Buscar Relatório  </button>
         </div>
 
         {errorReport && <p className="text-red-500">Erro ao buscar relatórios.</p>}

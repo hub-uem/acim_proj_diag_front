@@ -15,8 +15,7 @@ const margin = { top: 30, right: 60, bottom: 120, left: 40 };
 
 const tooltipStyles = {
   ...defaultStyles,
-  backgroundColor: "#058AFF",
-  border: "6px solid #F2F2F2",
+  border: "2px solid #F2F2F2",
   borderRadius: 6,
   color: "white",
   padding: "10px",
@@ -84,7 +83,7 @@ export default function BarChart() {
           top={height - margin.bottom}
           scale={xScale}
           tickLabelProps={() => ({
-            fill: "#00247c",
+            fill: "#034444",
             fontSize: 13,
             fontWeight: "bold",
             textAnchor: "middle",
@@ -97,7 +96,7 @@ export default function BarChart() {
           left={margin.left}
           scale={yScale}
           tickLabelProps={() => ({
-            fill: "#00247c",
+            fill: "#034444",
             fontSize: 13,
             fontWeight: "bold",
             textAnchor: "end",
@@ -114,7 +113,7 @@ export default function BarChart() {
               {
                 tipo: "usuario",
                 valor: d.valorFinal,
-                cor: "#058AFF",
+                cor: "#04bc9c",
               },
               {
                 tipo: "media",
@@ -167,7 +166,7 @@ export default function BarChart() {
           left={tooltipLeft}
           style={{
             ...tooltipStyles,
-            backgroundColor: tooltipData.tipo === "usuario" ? "#058AFF" : "rgb(196, 0, 0)", // azul ou vermelho
+            backgroundColor: tooltipData.tipo === "usuario" ? "#04bc9c" : "rgb(196, 0, 0)", // azul ou vermelho
           }}
         >
           <div>

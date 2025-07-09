@@ -27,7 +27,7 @@ export default function QuestionnairePage() {
 
     return (
         <>
-            <div className='w-screen min-h-screen flex flex-col items-center space-y-8 bg-teal-primary-opc'>
+            <div className='w-screen min-h-screen flex flex-col items-center space-y-8 bg-teal-off-white'>
                 <div className='h-[556px] w-full relative flex bg-teal'>
                     <Image
                         src='/questionnaire/stock.jpg'
@@ -58,7 +58,7 @@ export default function QuestionnairePage() {
                         {modules.map((module) => (
                             <div
                                 key={module.id}
-                                className='flex flex-col p-6 border-2 bg-white border-teal-primary hover:border-teal dark:border-gray-light dark:hover:border-hover-glow hover:-translate-y-3 transition transform duration-500 rounded-lg min-h-[300px] dark:bg-teal dark:hover:border-teal-primary dark:border-gunmetal '
+                                className='flex flex-col p-6 border-2 bg-white border-gray-light hover:border-teal-primary dark:border-gray-light dark:hover:border-hover-glow hover:-translate-y-3 transition transform duration-500 rounded-lg min-h-[300px] dark:bg-teal dark:hover:border-teal-primary dark:border-gunmetal '
                             >
                                 <h2 className='text-base md:text-xl font-semibold mb-2'>{module.title}</h2>
                                 <p className='mb-4 flex-grow text-gray-400'>{module.description}</p>
@@ -68,7 +68,7 @@ export default function QuestionnairePage() {
                                 </div>
                                 <Link
                                     href={`/questionnaire/${module.id}`}
-                                    className='mt-auto px-4 py-2 bg-teal-primary font-semibold text-white rounded-md hover:bg-teal-secundary-opc dark:bg-teal-primary'
+                                    className='mt-auto px-4 py-2 bg-teal-primary font-semibold text-white text-center rounded-md hover:bg-teal-primary-opc dark:bg-teal-primary'
                                 >
                                     Acessar Módulo
                                 </Link>

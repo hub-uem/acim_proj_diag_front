@@ -109,7 +109,7 @@ export default function Home() {
                         {sections.map((section) => (
                             <div
                                 key={section.id}
-                                className='flex flex-col rounded-md w-52 h-52 sm:w-64 sm:h-64 md:p-4 lg:w-60 lg:h-60 lg:p-6 justify-center items-center border-2 bg-white border-gray-light hover:border-hover-glow dark:border-gunmetal  dark:bg-teal dark:hover:border-teal-primary hover:-translate-y-3 transition transform duration-500'
+                                className='flex flex-col rounded-md w-52 h-52 sm:w-64 sm:h-64 md:p-4 lg:w-60 lg:h-60 lg:p-6 justify-center items-center border-2 bg-white border-gray-light hover:border-teal-primary dark:border-gunmetal dark:bg-teal dark:hover:border-teal-primary hover:-translate-y-3 transition transform duration-500'
                             >
                                 {section.icon}
                                 <p className='text-base md:text-xl font-semibold text-teal-primary'>{section.title}</p>

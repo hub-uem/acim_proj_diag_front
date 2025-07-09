@@ -43,7 +43,7 @@ export default function DropdownMenu({ item, handleDownload }: DropdownMenuProps
               handleDownload(item.id.toString());
               setOpen(false);
             }}
-            className="block w-full px-4 py-2 text-gray-700 text-center hover:bg-gray-100 border-b-2 border-blue-darknut"
+            className="block w-full px-4 py-2 text-gray-700 text-center hover:bg-gray-100 border-b-2 border-teal-primary"
           >
             Baixar
           </button>

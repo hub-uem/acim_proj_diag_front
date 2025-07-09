@@ -15,7 +15,7 @@ export default {
       },
       colors: {
         // white 
-        'bleached-silk': ' #F2F2F2',
+        'bleached-silk': 'rgb(211, 211, 211)',
         'off-white': 'rgba(244, 242, 238, 0.46)',
 
         // gray
@@ -34,16 +34,14 @@ export default {
 
         //green
         'turquoise': ' #2bfdbe', 
-
-        // light mint green
         'mint-green': ' #96f0a0', 
 
         // teal
-        'teal': 'rgb(2, 46, 46)', 
+        'teal': ' #022e2e', 
         'teal-primary': ' #04bc9c', 
-        'teal-primary-opc': 'rgba(4, 188, 157, 0.53)', 
-        'teal-secundary': ' rgb(3, 68, 68)',
-        'teal-secundary-opc': ' rgba(4, 68, 68, 0.88)',
+        'teal-primary-opc': 'rgba(4, 188, 157, 0.9)', 
+        'teal-secundary': ' #034444',
+        'teal-secundary-opc': ' #044444',
       },
       opacity: {
         '99': '0.99',

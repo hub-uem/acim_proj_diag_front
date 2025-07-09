@@ -13,7 +13,6 @@ const levels = 5;
 
 const tooltipStyles = {
   ...defaultStyles,
-  backgroundColor: "#058AFF",
   border: "2px solid #F2F2F2",
   borderRadius: 6,
   color: "white",
@@ -124,7 +123,7 @@ export default function RadarChart({ data }: RadarChartProps) {
           <polygon
             points={userPolygon}
             fill="rgba(5, 138, 255, 0.4)"
-            stroke="#058AFF"
+            stroke="#04bc9c"
             strokeWidth={2}
           />
 
@@ -135,7 +134,7 @@ export default function RadarChart({ data }: RadarChartProps) {
               cx={p.x}
               cy={p.y}
               r={6}
-              fill="#058AFF"
+              fill="#04bc9c"
               stroke="#fff"
               strokeWidth={2}
               onMouseMove={(e) => {
@@ -187,7 +186,7 @@ export default function RadarChart({ data }: RadarChartProps) {
           left={tooltipLeft}
           style={{
             ...tooltipStyles,
-            backgroundColor: tooltipData.tipo === "usuario" ? "#058AFF" : "rgb(196, 0, 0)", // azul ou vermelho
+            backgroundColor: tooltipData.tipo === "usuario" ? "#04bc9c" : "rgb(196, 0, 0)", // azul ou vermelho
           }}
         >
           <div>
