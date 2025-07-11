@@ -25,7 +25,7 @@ export default function LikertScale({ numOptions, selectedOption, setSelectedOpt
                             <div
                                 key={index}
                                 className={`flex items-center justify-center font-semibold rounded-full cursor-pointer hover:text-teal hover:border-teal dark:border-bleached-silk dark:hover:text-hover-glow dark:hover:border-hover-glow 
-                            ${isSelected ? 'bg-teal text-bleached-silk hover:text-bleached-silk dark:bg-hover-glow dark:hover:text-bleached-silk' : 'border-2 border-teal text-bleached-silk '}
+                            ${isSelected ? 'bg-teal text-bleached-silk hover:text-teal-primary dark:bg-hover-glow dark:hover:text-teal' : 'border-2 border-teal text-bleached-silk '}
                         `}
                                 style={{
                                     width: `calc(3vw + ${size}px)`,

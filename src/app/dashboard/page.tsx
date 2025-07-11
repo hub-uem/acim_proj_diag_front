@@ -46,29 +46,29 @@ export default function Dashboard(){
   };
 
   return (
-    <div className='flex flex-col w-full space-y-8 md:space-y-12 pt-4 pb-40'>
+    <div className='flex flex-col w-full space-y-8 md:space-y-12 pb-40 bg-bleached-silk  dark:bg-teal-secundary'>
       
-      <div className='pt-4 text-center'>
+      <div className='p-10 text-center'>
         {/* <h1 className="text-4xl font-bold text-royal-blue border-b-2 border-royal-blue pb-2">
           Gráfico de Evolução
         </h1>
         <div className="flex justify-center">
           <TrendChart />
         </div> */}
-         <h1 className="text-4xl font-bold text-royal-blue border-b-2 border-royal-blue pb-2">
+        <h1 className="text-4xl font-bold text-royal-blue border-b-2 border-teal-primary pb-2">
           Gráfico de Comparação Empresarial
         </h1>
         <div className="flex justify-center">
           <BarChart />
         </div>
       </div>
-      <div className='border-2 border-blue-darknut p-4 m-10 rounded-md bg-gray-50 shadow-sm'>
+      <div className='border-2 p-4 m-10 rounded-md bg-gray-50 shadow-sm dark:bg-teal dark:border-black-wash'>
         <h2 className="text-xl font-semibold mb-4">Gerar Relatório</h2>
         <div className="flex space-x-2 mb-4">
           <select
             value={dateSelection}
             onChange={(e) => setDateSelection(e.target.value)}
-            className="flex-grow px-4 py-2 border rounded-md focus:outline-none focus:ring focus:royal-blue"
+            className="flex-grow px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-teal-primary dark:bg-gray-light dark:text-black-wash"
           >
             <option value="">Selecione uma data</option>
             {availableDates.map((date) => (

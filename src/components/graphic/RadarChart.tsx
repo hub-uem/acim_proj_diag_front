@@ -82,7 +82,7 @@ export default function RadarChart({ data }: RadarChartProps) {
                 cx={center}
                 cy={center}
                 r={r}
-                stroke="rgb(67, 145, 41)"
+                stroke="rgba(66, 211, 17, 1)"
                 strokeWidth={isLast ? 2.5 : 0.4}
                 fill="none"
               />
@@ -102,7 +102,7 @@ export default function RadarChart({ data }: RadarChartProps) {
                   dx={outer.x < center ? "-2em" : "3em"}
                   fontSize={13}
                   fontWeight="bold"
-                  fill="#00247c"
+                  fill="#04bc9c"
                   textAnchor="middle"
                 >
                   {label}
@@ -122,7 +122,7 @@ export default function RadarChart({ data }: RadarChartProps) {
           {/* Polígono do usuário */}
           <polygon
             points={userPolygon}
-            fill="rgba(5, 138, 255, 0.4)"
+            fill="#04bc9d63"
             stroke="#04bc9c"
             strokeWidth={2}
           />

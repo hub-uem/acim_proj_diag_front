@@ -27,7 +27,7 @@ export default function QuestionnairePage() {
 
     return (
         <>
-            <div className='w-screen min-h-screen flex flex-col items-center space-y-8 bg-teal-off-white'>
+            <div className='w-screen min-h-screen flex flex-col items-center space-y-8 dark:bg-teal-secundary'>
                 <div className='h-[556px] w-full relative flex bg-teal'>
                     <Image
                         src='/questionnaire/stock.jpg'
@@ -50,7 +50,7 @@ export default function QuestionnairePage() {
                     </div>
                 </div>
                 <div className='p-12 pb-32'>
-                    <p className='text-teal text-center text-2xl max-w-4xl mx-auto mb-12'>
+                    <p className='text-teal text-center text-2xl max-w-4xl mx-auto mb-12 dark:text-bleached-silk'>
                         Escolha um dos módulos abaixo para começar o diagnóstico. Cada módulo foi desenvolvido para abordar
                         aspectos específicos da sua empresa e fornecer insights valiosos.
                     </p>
@@ -58,7 +58,7 @@ export default function QuestionnairePage() {
                         {modules.map((module) => (
                             <div
                                 key={module.id}
-                                className='flex flex-col p-6 border-2 bg-white border-gray-light hover:border-teal-primary dark:border-gray-light dark:hover:border-hover-glow hover:-translate-y-3 transition transform duration-500 rounded-lg min-h-[300px] dark:bg-teal dark:hover:border-teal-primary dark:border-gunmetal '
+                                className='flex flex-col p-6 border-2 bg-white border-gray-light hover:border-teal-primary dark:border-gray-light dark:hover:border-hover-glow hover:-translate-y-3 transition transform duration-500 rounded-lg min-h-[300px] dark:bg-teal dark:hover:border-teal-primary dark:border-black-wash '
                             >
                                 <h2 className='text-base md:text-xl font-semibold mb-2'>{module.title}</h2>
                                 <p className='mb-4 flex-grow text-gray-400'>{module.description}</p>

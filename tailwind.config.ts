@@ -15,7 +15,7 @@ export default {
       },
       colors: {
         // white 
-        'bleached-silk': 'rgb(211, 211, 211)',
+        'bleached-silk': ' #ececec',
         'off-white': 'rgba(244, 242, 238, 0.46)',
 
         // gray
@@ -23,13 +23,12 @@ export default {
 
         // black
         'black-wash': ' #0D0D0D',
+        'black-opc': 'rgba(14, 13, 13, 0.73)',
 
         // green
         'hover-glow': ' #4bd360',
 
         // dark blue
-        'gunmetal': ' #121826',
-        'dark-navy-blue': ' #0F1117',
         'midnight-blue': ' #030712',
 
         //green
@@ -38,7 +37,7 @@ export default {
 
         // teal
         'teal': ' #022e2e', 
-        'teal-primary': ' #04bc9c', 
+        'teal-primary': '#04bc9c', 
         'teal-primary-opc': 'rgba(4, 188, 157, 0.9)', 
         'teal-secundary': ' #034444',
         'teal-secundary-opc': ' #044444',

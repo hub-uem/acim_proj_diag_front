@@ -1,4 +1,4 @@
-import { AnimatedText, LikertScale } from '@/components/questionnaire';
+import { LikertScale } from '@/components/questionnaire';
 
 interface QuestionWithLikertProps {
     question: string;

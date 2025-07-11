@@ -3,11 +3,13 @@
 import { scaleLinear, scaleBand } from "@visx/scale";
 import { Group } from "@visx/group";
 import { AxisLeft, AxisBottom } from "@visx/axis";
-import { GridRows, GridColumns } from "@visx/grid";
+// import { GridRows, GridColumns } from "@visx/grid";
 import { Tooltip, useTooltip, defaultStyles } from "@visx/tooltip";
 import { localPoint } from "@visx/event";
 import type { ResultadoDimensao } from "@/redux/features/questionnaireApiSlice";
 import { useGetDimensoesQuery } from "@/redux/features/questionnaireApiSlice";
+
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 const width = 1000;
 const height = 600;
@@ -67,23 +69,11 @@ export default function BarChart() {
   return (
     <div className="relative">
       <svg width={width} height={height}>
-        <GridRows
-          scale={yScale}
-          width={width - margin.left - margin.right}
-          left={margin.left}
-          stroke="rgb(222, 224, 226)"
-        />
-        <GridColumns
-          scale={xScale}
-          height={height - margin.top - margin.bottom}
-          top={margin.top}
-          stroke="#f3f4f6"
-        />
         <AxisBottom
           top={height - margin.bottom}
           scale={xScale}
           tickLabelProps={() => ({
-            fill: "#034444",
+            fill: prefersDark ? '#04bc9c': "#034444",
             fontSize: 13,
             fontWeight: "bold",
             textAnchor: "middle",
@@ -96,7 +86,7 @@ export default function BarChart() {
           left={margin.left}
           scale={yScale}
           tickLabelProps={() => ({
-            fill: "#034444",
+            fill: prefersDark ? '#04bc9c': "#04bc9c",
             fontSize: 13,
             fontWeight: "bold",
             textAnchor: "end",
@@ -113,7 +103,7 @@ export default function BarChart() {
               {
                 tipo: "usuario",
                 valor: d.valorFinal,
-                cor: "#04bc9c",
+                cor: prefersDark ? " #04bc9c": " #2bfdbe",
               },
               {
                 tipo: "media",

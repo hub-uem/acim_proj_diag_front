@@ -40,9 +40,6 @@ export default function Page() {
     const currentQuestion = currentDimension.questions[currentQuestionIndex];
 
     const isFirstQuestion = currentDimensionIndex === 0 && currentQuestionIndex === 0 && showDescription;
-    const isLastQuestion =
-        currentDimensionIndex === totalDimensions - 1 &&
-        currentQuestionIndex === totalQuestionsInDimension - 1;
 
     const goToNext = () => {
         if (showDescription && currentQuestionIndex < totalQuestionsInDimension) {
