@@ -7,7 +7,7 @@ export default function isValidCNPJ(cnpj: string): boolean {
     // Elimina CNPJs inválidos conhecidos
     if (/^(.)\1+$/.test(cnpj)) return false;
 
-    let t = cnpj.length - 2,
+    const t = cnpj.length - 2,
         d = cnpj.substring(t),
         d1 = parseInt(d.charAt(0)),
         d2 = parseInt(d.charAt(1)),

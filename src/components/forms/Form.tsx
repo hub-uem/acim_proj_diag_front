@@ -24,7 +24,7 @@ interface Props {
     config: Config[];
     isLoading: boolean;
     btnText: string;
-    onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
     onSubmit: (event: FormEvent<HTMLFormElement>) => void;
     errors?: {[key: string]: string};
 }

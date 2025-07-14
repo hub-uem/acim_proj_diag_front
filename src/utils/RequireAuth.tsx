@@ -3,7 +3,6 @@
 import { redirect } from 'next/navigation';
 import { useAppSelector } from '@/redux/hooks';
 import { Spinner } from '@/components/common';
-import { toast } from 'react-toastify';
 
 interface Props {
     children: React.ReactNode;
