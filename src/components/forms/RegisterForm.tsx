@@ -2,6 +2,7 @@
 
 import { useRegister } from '@/hooks';
 import { Form } from '@/components/forms';
+// import React, { useState } from 'react';
 
 export default function RegisterForm() {
 	const {
@@ -15,6 +16,7 @@ export default function RegisterForm() {
 		isLoading,
 		onChange,
 		onSubmit,
+		errors
 	} = useRegister();
 
 	const config = [
@@ -82,6 +84,32 @@ export default function RegisterForm() {
 		},
 	];
 
+	// const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+	// const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	// 	e.preventDefault();
+
+	// 	const newErrors: { [key: string]: string } = {};
+
+	// 	config.forEach(input => {
+	// 		if (input.required && !String(input.value).trim()) {
+	// 			newErrors[input.labelId] = 'Este campo é obrigatório';
+	// 		}
+	// 	});
+
+	// 	// Validação de senha extra
+	// 	if (password !== re_password) {
+	// 		newErrors['re_password'] = 'As senhas não coincidem';
+	// 	}
+
+	// 	setErrors(newErrors);
+
+	// 	if (Object.keys(newErrors).length === 0) {
+	// 		onSubmit(e); // <-- chama o submit real
+	// 	}
+	// };
+	
+
 	return (
 		<Form
 			config={config}
@@ -89,6 +117,7 @@ export default function RegisterForm() {
 			btnText='Criar conta'
 			onChange={onChange}
 			onSubmit={onSubmit}
+			errors={errors}
 		/>
 	);
 }

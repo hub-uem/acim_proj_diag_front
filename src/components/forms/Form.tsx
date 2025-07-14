@@ -26,6 +26,7 @@ interface Props {
     btnText: string;
     onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+    errors?: {[key: string]: string};
 }
 
 export default function Form({
@@ -34,22 +35,29 @@ export default function Form({
     btnText,
     onChange,
     onSubmit,
+    errors,
 }: Props) {
     return (
         <form className='rounded-md space-y-6' onSubmit={onSubmit}>
             {config.map(input => (
-                <Input
-                    key={input.labelId}
-                    labelId={input.labelId}
-                    type={input.type}
-                    onChange={onChange}
-                    value={input.value}
-                    link={input.link}
-                    required={input.required}
-                    options={input.options} 
-                >
-                    {input.labelText}
-                </Input>
+                <div key={input.labelId} className='space-y-1'>
+                    <Input
+                        key={input.labelId}
+                        labelId={input.labelId}
+                        type={input.type}
+                        onChange={onChange}
+                        value={input.value}
+                        link={input.link}
+                        required={input.required}
+                        options={input.options} 
+                    >
+                        {input.labelText}
+                    </Input>
+
+                    {errors?.[input.labelId]?.[0] && (
+                        <p className="text-sm text-red-500">{errors[input.labelId][0]}</p>
+                    )}
+                </div>   
             ))}
 
             <div>
