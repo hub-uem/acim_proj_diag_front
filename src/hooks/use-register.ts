@@ -20,13 +20,15 @@ export default function useRegister() {
     const { email, username, cnpj, porte, setor, password, re_password } = formData;
 
     const onChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-};
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(formData);
+        setErrors({});
 
         register(formData)
             .unwrap()
@@ -37,6 +39,15 @@ export default function useRegister() {
             .catch((error) => {
                 console.error('Registration error:', error);
                 toast.error('Falha ao registrar conta');
+
+                if (error.response?.status === 422) {
+                    setErrors(error.data.errors);
+                } else if (error?.data?.message) {
+                    // Caso backend retorne erro genérico
+                    setErrors({ general: error.data.message });
+                } else {
+                    setErrors({ general: 'Erro desconhecido' });
+                }
             });
     };
 
@@ -51,5 +62,7 @@ export default function useRegister() {
         isLoading,
         onChange,
         onSubmit,
+        errors,
+        setErrors
     };
 }
