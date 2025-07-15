@@ -53,10 +53,11 @@ export default function Form({
                     >
                         {input.labelText}
                     </Input>
-
-                    {errors?.[input.labelId]?.[0] && (
-                        <p className="text-sm text-red-500">{errors[input.labelId][0]}</p>
-                    )}
+                    {
+                        errors?.[input.labelId]?.[0] && (
+                            <p className="text-sm text-red-700">{errors[input.labelId]}</p>
+                        )
+                    }
                 </div>   
             ))}
 
