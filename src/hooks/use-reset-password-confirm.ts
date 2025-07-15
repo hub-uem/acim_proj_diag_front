@@ -16,7 +16,7 @@ export default function useResetPasswordConfirm(uid: string, token: string) {
 
 	const { new_password, re_new_password } = formData;
 
-	const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+	const onChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
 		const { name, value } = event.target;
 
 		setFormData({ ...formData, [name]: value });

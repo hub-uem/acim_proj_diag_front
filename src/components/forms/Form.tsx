@@ -24,7 +24,7 @@ interface Props {
     config: Config[];
     isLoading: boolean;
     btnText: string;
-    onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
     onSubmit: (event: FormEvent<HTMLFormElement>) => void;
     errors?: {[key: string]: string};
 }
@@ -53,10 +53,11 @@ export default function Form({
                     >
                         {input.labelText}
                     </Input>
-
-                    {errors?.[input.labelId]?.[0] && (
-                        <p className="text-sm text-red-500">{errors[input.labelId][0]}</p>
-                    )}
+                    {
+                        errors?.[input.labelId]?.[0] && (
+                            <p className="text-sm text-red-700">{errors[input.labelId]}</p>
+                        )
+                    }
                 </div>   
             ))}
 

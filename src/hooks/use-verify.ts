@@ -22,5 +22,5 @@ export default function useVerify() {
             .finally(() => {
                 dispatch(finishInitialLoad());
             });
-    }, []);
+    }, [dispatch, verify]);
 }

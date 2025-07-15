@@ -7,7 +7,7 @@ export default function useResetPassword() {
 
     const [email, setEmail] = useState('');
 
-    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const onChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setEmail(event.target.value);
     };
 

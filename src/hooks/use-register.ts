@@ -18,17 +18,20 @@ export default function useRegister() {
     });
 
     const { email, username, cnpj, porte, setor, password, re_password } = formData;
+    const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({});
 
-    const onChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const onChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
-    };
 
-    const [errors, setErrors] = useState<{ [key: string]: string }>({});
+        if (fieldErrors[name]) {
+            setFieldErrors((prev) => ({...prev, [name]: ''}));
+        }
+    };
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setErrors({});
+        setFieldErrors({});
 
         register(formData)
             .unwrap()
@@ -37,17 +40,21 @@ export default function useRegister() {
                 router.push('/authentication/login');
             })
             .catch((error) => {
-                console.error('Registration error:', error);
-                toast.error('Falha ao registrar conta');
-
-                if (error.response?.status === 422) {
-                    setErrors(error.data.errors);
-                } else if (error?.data?.message) {
-                    // Caso backend retorne erro genérico
-                    setErrors({ general: error.data.message });
-                } else {
-                    setErrors({ general: 'Erro desconhecido' });
-                }
+                const mappedErros: {[key: string]: string} = {};
+                const campos = Object.keys(formData)
+                for (const erro in error.data) {
+                    if (campos.includes(erro)) {
+                        if  (erro === 'username') {
+                            mappedErros[erro] = "Este nome já se encontrada cadastrado.";
+                        } else {
+                            mappedErros[erro] = error.data[erro]
+                        }
+                    }
+                    else {
+                        mappedErros['password'] = error.data[erro]
+                    }
+                } 
+                setFieldErrors(mappedErros); 
             });
     };
 
@@ -62,7 +69,6 @@ export default function useRegister() {
         isLoading,
         onChange,
         onSubmit,
-        errors,
-        setErrors
+        fieldErrors,
     };
 }

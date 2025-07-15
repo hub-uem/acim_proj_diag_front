@@ -10,7 +10,7 @@ interface Option {
 interface Props {
     labelId: string;
     type: string;
-    onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
     value: string;
     children: React.ReactNode;
     link?: {
