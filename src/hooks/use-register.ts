@@ -45,9 +45,11 @@ export default function useRegister() {
                 for (const erro in error.data) {
                     if (campos.includes(erro)) {
                         if  (erro === 'username') {
-                            mappedErros[erro] = "Este nome já se encontrada cadastrado.";
-                        } else {
-                            mappedErros[erro] = error.data[erro]
+                            mappedErros[erro] = "Este nome já se encontrada cadastrado";
+                        } else if (erro === 'cnpj') {
+                            mappedErros[erro] = "CNPJ inválido!"
+                        } else if (erro === 'email') {
+                             mappedErros[erro] = "Este e-mail já se encontrada cadastrado"
                         }
                     }
                     else {
