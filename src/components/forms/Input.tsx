@@ -59,7 +59,7 @@ export default function Input({
                         value={value}
                         onChange={onChange}
                         required={required}
-                        className="block w-full rounded-md px-1.5 py-1.5 text-black-wash dark:bg-off-white dark:text-bleached-silk shadow-md focus:ring-40 focus:ring-inset focus:to-hover-glow sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md px-1.5 py-1.5 text-black-wash dark:bg-off-white dark:text-black-wash shadow-md focus:ring-40 focus:ring-inset focus:to-hover-glow sm:text-sm sm:leading-6"
                     >
                         <option value="">Selecione...</option>
                         {options.map((opt) => (
