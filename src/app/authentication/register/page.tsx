@@ -25,7 +25,7 @@ export default function Page() {
                         <span className='inline-block'>
                             <Link
                                 href='/authentication/login'
-                                className='text-teal-primary font-extrabold'
+                                className='text-teal-secundary dark:text-teal-primary font-extrabold'
                             >
                                 Entre aqui
                             </Link>
