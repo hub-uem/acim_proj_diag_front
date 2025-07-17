@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 export default function Page() {
     return (
         <main className='min-h-screen p-12 dark:bg-teal-secundary'>
-            <div className='flex flex-col max-w-md mx-auto dark:bg-teal rounded-md border-2 border-black-wash'>
+            <div className='flex flex-col max-w-md mx-auto bg-teal-primary rounded-md border-2 border-teal dark:bg-teal dark:border-black-wash '>
                 <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
-                    <h2 className='mt-10 text-center text-2xl font-bold leading-9 tracking-tight'>
+                    <h2 className='mt-10 text-center text-2xl text-white font-bold leading-9 tracking-tight'>
                         Redefina sua senha
                     </h2>
                 </div>

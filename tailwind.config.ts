@@ -17,6 +17,7 @@ export default {
         // white 
         'bleached-silk': ' #ececec',
         'off-white': 'rgba(244, 242, 238, 0.46)',
+        'white': '#FFFFFF',
 
         // gray
         'gray-light': ' #D9D9D9',

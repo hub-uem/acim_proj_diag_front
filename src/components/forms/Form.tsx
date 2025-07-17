@@ -40,7 +40,7 @@ export default function Form({
     return (
         <form className='rounded-md space-y-6' onSubmit={onSubmit}>
             {config.map(input => (
-                <div key={input.labelId} className='space-y-1'>
+                <div key={input.labelId} className='space-y-1 text-white'>
                     <Input
                         key={input.labelId}
                         labelId={input.labelId}
@@ -64,7 +64,7 @@ export default function Form({
             <div>
                 <button
                     type='submit'
-                    className='flex w-full justify-center rounded-md bg-teal-secundary dark:bg-teal-primary py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-teal-secundary-opc  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hover-glow dark:houve:bg-teal-primary-opc'
+                    className='flex w-full justify-center rounded-md bg-teal-secundary dark:bg-teal-primary py-1.5 text-sm text-white dark:text-black-wash font-semibold leading-6 shadow-sm hover:bg-teal-secundary-opc  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hover-glow dark:houve:bg-teal-primary-opc'
                     disabled={isLoading}
                 >
                     {isLoading ? <Spinner sm /> : `${btnText}`}
