@@ -19,6 +19,7 @@ export default function Page() {
     const [showDescription, setShowDescription] = useState(true);
     const [showSubmit, setShowSubmit] = useState(false);
     const { responses, handleResponseChange, handleSubmitResponses } = useSubmitResponses();
+    const [completedIndices, setCompletedIndices] = useState<number[]>([]);
 
     if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error loading module data.</div>;
@@ -47,10 +48,12 @@ export default function Page() {
         } else if (currentQuestionIndex < totalQuestionsInDimension - 1) {
             setCurrentQuestionIndex((prev) => prev + 1);
         } else if (currentDimensionIndex < totalDimensions - 1) {
+            setCompletedIndices((prev) => [...new Set([...prev, currentDimensionIndex])]);
             setCurrentDimensionIndex((prev) => prev + 1);
             setCurrentQuestionIndex(0);
             setShowDescription(true);
         } else if (currentDimensionIndex === totalDimensions - 1) {
+            setCompletedIndices((prev) => [...new Set([...prev, currentDimensionIndex])]);
             setShowSubmit(true);
         }
     };
@@ -61,8 +64,10 @@ export default function Page() {
         } else if (currentQuestionIndex > 0) {
             setCurrentQuestionIndex((prev) => prev - 1);
         } else if (currentDimensionIndex > 0) {
-            setCurrentDimensionIndex(currentDimensionIndex - 1);
-            const previousDimension = dimensions[currentDimensionIndex - 1];
+            const newIndex = currentDimensionIndex - 1;
+            setCompletedIndices((prev) => prev.filter((i) => i !== newIndex));
+            setCurrentDimensionIndex(newIndex);
+            const previousDimension = dimensions[newIndex];
             if (previousDimension.questions.length > 0) {
                 setCurrentQuestionIndex(previousDimension.questions.length - 1);
                 setShowDescription(false);
@@ -83,7 +88,7 @@ export default function Page() {
                         <NavigationButton onClick={goToPrevious} position='left' size='sm' />
                     )}
                 </div>
-                <h2 className='text-2xl sm:text-3xl md:text-5xl font-extrabold text-royal-blue dark:text-gray-light text-center'>
+                <h2 className='text-3xl sm:text-3xl md:text-5xl font-extrabold text-royal-blue dark:text-gray-light text-center'>
                     {currentDimension.title}
                 </h2>
             </div>
@@ -190,10 +195,50 @@ export default function Page() {
     };
 
     return (
-        <div className='min-h-screen p-4 pt-32 sm:p-8 sm:pt-36 md:p-12 md:pt-40 bg-bleached-silk dark:bg-teal-secundary'>
-            <div className='flex flex-col p-4 max-w-4xl mx-auto bg-teal-primary dark:bg-teal rounded-md border border-teal dark:border-black-wash'>
-                {showSubmit ? <SubmitView /> : (showDescription ? <DescriptionView /> : <QuestionView />)}
+        <div className='flex flex-col min-h-screen p-4 pt-32 sm:p-8 sm:pt-36 md:flex-row md:p-12 md:pt-40 bg-bleached-silk dark:bg-teal-secundary gap-6'>
+
+            {/* Div do Histórico */}
+            <div className='flex flex-col justify-center bg-teal-primary border border-teal p-4 md:w-1/3'>
+                <h2 className='text-3xl text-center mb-10 text-teal'>Histórico de preenchimento</h2>
+                <div className="space-y-4">
+                {dimensions.map((dimension, index) => {
+                    const isCurrent = index === currentDimensionIndex;
+                    const isCompleted = completedIndices.includes(index);
+
+                    return (
+                    <div key={index} className="flex items-center justify-between">
+                        <p
+                        className={`text-xl font-semibold pb-2 border-b-2 flex-1 ${
+                            isCurrent
+                            ? 'text-white border-white'
+                            : 'text-teal border-teal-secundary'
+                        }`}
+                        >
+                        {dimension.title}
+                        </p>
+                        {isCompleted && (
+                        <span className="ml-4 w-6 h-6 flex items-center justify-center rounded-full bg-teal text-white text-sm font-bold">
+                            ✓
+                        </span>
+                        )}
+                    </div>
+                    );
+                })}
+                </div>
             </div>
+
+            {/* Div do Conteúdo (Description, Question, Submit) */}
+            <div  className='flex flex-col items-center justify-center p-4 md:flex-1 mx-auto bg-teal-primary dark:bg-teal rounded-md border border-teal dark:border-black-wash'>
+                {showSubmit
+                ? <SubmitView />
+                : (showDescription
+                    ? <DescriptionView />
+                    : <QuestionView />
+                )
+                }
+            </div>
+
         </div>
+
     );
 }
