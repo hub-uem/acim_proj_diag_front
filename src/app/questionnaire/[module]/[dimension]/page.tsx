@@ -236,9 +236,9 @@ export default function Page() {
 
     return (
         <div className='flex flex-col min-h-screen p-4 pt-32 sm:p-8 sm:pt-36 md:flex-row md:p-12 md:pt-40 bg-bleached-silk dark:bg-teal-secundary gap-6'>
-            {/* Div do Histórico */}
-            <div className='flex flex-col justify-center bg-teal-primary border border-teal p-4 md:w-1/3'>
-                <h2 className='text-3xl text-center mb-10 text-teal'>Histórico de preenchimento</h2>
+
+            <div className='flex flex-col justify-center bg-teal-primary border border-teal p-4 md:w-1/3 dark:bg-teal'>
+                <h2 className='text-3xl text-center mb-10 text-teal font-bold dark:text-white'>Histórico de preenchimento</h2>
                 <div className="space-y-4">
                 {dimensions.map((dimension, index) => {
                     const isCurrent = index === currentDimensionIndex;
@@ -249,14 +249,14 @@ export default function Page() {
                         <p
                         className={`text-xl font-semibold pb-2 border-b-2 flex-1 ${
                             isCurrent
-                            ? 'text-white border-white'
-                            : 'text-teal border-teal-secundary'
+                            ? 'text-white border-teal-white dark:text-teal-primary dark:border-teal-primary'
+                            : 'text-teal border-teal dark:text-white dark:border-white'
                         }`}
                         >
                         {dimension.title}
                         </p>
                         {isCompleted && (
-                        <span className="ml-4 w-6 h-6 flex items-center justify-center rounded-full bg-teal text-white text-sm font-bold">
+                        <span className="ml-4 w-6 h-6 flex items-center justify-center rounded-full bg-teal text-white text-sm font-bold dark:bg-teal-primary">
                             ✓
                         </span>
                         )}
