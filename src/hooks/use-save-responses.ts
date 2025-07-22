@@ -15,16 +15,37 @@ export default function useSubmitResponses() {
         }));
     };
 
-    const handleSubmitResponses = async (moduleName: string) => {
+    const handleSubmitResponses = async (moduleName: string, respostasIncompletas?: Record<string, any>) => {
         const formattedResponses = Object.entries(responses).map(([questionID, selectedOption]) => ({
             perguntaId: parseInt(questionID, 10),
             valor: selectedOption + 1,
         }));
 
+        let todasRespostas: any[] = [];
+        if (respostasIncompletas) {
+            Object.values(respostasIncompletas).forEach((dim: any) => {
+                if (dim.respostas) {
+                    const corrigidas = dim.respostas.map((r: any) => ({
+                        perguntaId: r.perguntaId ?? r.id,
+                        valor: r.valor,
+                    }));
+                    todasRespostas = todasRespostas.concat(corrigidas);
+                }
+            });
+        }
+        todasRespostas = todasRespostas.concat(formattedResponses);
+
+        const respostasUnicas = Object.values(
+            todasRespostas.reduce((acc, resposta) => {
+                acc[resposta.perguntaId] = resposta;
+                return acc;
+            }, {} as Record<number, { perguntaId: number; valor: number }>)
+        ) as { perguntaId: number; valor: number }[];
+
         try {
             await saveModuleResponses({
                 nomeModulo: moduleName,
-                respostas: formattedResponses,
+                respostas: respostasUnicas,
             }).unwrap();
             toast.success('Respostas enviadas com sucesso!');
             router.push('/questionnaire');
@@ -36,6 +57,7 @@ export default function useSubmitResponses() {
 
     return {
         responses,
+        setResponses,
         isLoading,
         handleResponseChange,
         handleSubmitResponses,

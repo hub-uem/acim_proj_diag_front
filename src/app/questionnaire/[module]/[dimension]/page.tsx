@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useSubmitResponses } from '@/hooks';
+import useSaveResponsesIncomplete from '@/hooks/use-save-responses-incomplete';
 import { useGetQuestionnaireByModuleQuery, useDownloadReportMutation } from '@/redux/features/questionnaireApiSlice';
 import { QuestionWithLikert } from '@/components/questionnaire';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -18,8 +19,37 @@ export default function Page() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [showDescription, setShowDescription] = useState(true);
     const [showSubmit, setShowSubmit] = useState(false);
-    const { responses, handleResponseChange, handleSubmitResponses } = useSubmitResponses();
+    const { responses, setResponses, handleResponseChange, handleSubmitResponses } = useSubmitResponses();
     const [completedIndices, setCompletedIndices] = useState<number[]>([]);
+    const { saveResponsesIncomplete, isSaving } = useSaveResponsesIncomplete();
+
+    useEffect(() => {
+        if (moduleData) {
+            const respondidas = (moduleData as any).respondidas || [];
+            const indicesRespondidas = moduleData.dimensoes
+                .map((dim: any, idx: number) => respondidas.includes(dim.dimensaoTitulo) ? idx : null)
+                .filter((idx: number | null) => idx !== null) as number[];
+            setCompletedIndices(indicesRespondidas);
+
+            const respostasIncompletas = (moduleData as any).respostasIncompletas || {};
+            let respostasAntigas: Record<number, number> = {};
+            Object.values(respostasIncompletas).forEach((dim: any) => {
+                if (dim.respostas) {
+                    dim.respostas.forEach((r: any) => {
+                        const perguntaId = r.perguntaId ?? r.id;
+                        respostasAntigas[perguntaId] = r.valor;
+                    });
+                }
+            });
+            setResponses(respostasAntigas);
+
+            if (typeof (moduleData as any).nextDimensionIndex === 'number') {
+                setCurrentDimensionIndex((moduleData as any).nextDimensionIndex);
+                setCurrentQuestionIndex(0);
+                setShowDescription(true);
+            }
+        }
+    }, [moduleData]);
 
     if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error loading module data.</div>;
@@ -42,13 +72,23 @@ export default function Page() {
 
     const isFirstQuestion = currentDimensionIndex === 0 && currentQuestionIndex === 0 && showDescription;
 
+    const handleFinishDimension = async () => {
+        await saveResponsesIncomplete(
+            moduleName as string,
+            currentDimension,
+            responses
+        );
+        setCompletedIndices((prev) => [...new Set([...prev, currentDimensionIndex])]);
+        setShowDescription(true);
+    };
+
     const goToNext = () => {
         if (showDescription && currentQuestionIndex < totalQuestionsInDimension) {
             setShowDescription(false);
         } else if (currentQuestionIndex < totalQuestionsInDimension - 1) {
             setCurrentQuestionIndex((prev) => prev + 1);
         } else if (currentDimensionIndex < totalDimensions - 1) {
-            setCompletedIndices((prev) => [...new Set([...prev, currentDimensionIndex])]);
+            handleFinishDimension();
             setCurrentDimensionIndex((prev) => prev + 1);
             setCurrentQuestionIndex(0);
             setShowDescription(true);
@@ -134,7 +174,7 @@ export default function Page() {
 
         const handleSubmitAndDownload = async () => {
             try {
-                await handleSubmitResponses(moduleName as string);
+                await handleSubmitResponses(moduleName as string, (moduleData as any).respostasIncompletas);
 
                 const blob = await downloadReport('Diagnóstico Organizacional').unwrap();
                 const url = window.URL.createObjectURL(blob);
@@ -158,7 +198,7 @@ export default function Page() {
                 <h1 className='text-2xl sm:text-3xl md:text-5xl font-extrabold mb-16'> Questionário Finalizado! </h1>
                 <button
                     className='px-6 py-3 bg-turquoise rounded-md text-black-wash'
-                    onClick={handleSubmitAndDownload} // Substituí o evento onClick
+                    onClick={handleSubmitAndDownload}
                 >
                     Enviar Respostas e Baixar Relatório
                 </button>
@@ -196,7 +236,6 @@ export default function Page() {
 
     return (
         <div className='flex flex-col min-h-screen p-4 pt-32 sm:p-8 sm:pt-36 md:flex-row md:p-12 md:pt-40 bg-bleached-silk dark:bg-teal-secundary gap-6'>
-
             {/* Div do Histórico */}
             <div className='flex flex-col justify-center bg-teal-primary border border-teal p-4 md:w-1/3'>
                 <h2 className='text-3xl text-center mb-10 text-teal'>Histórico de preenchimento</h2>
@@ -237,8 +276,6 @@ export default function Page() {
                 )
                 }
             </div>
-
         </div>
-
     );
 }
