@@ -54,6 +54,6 @@ O sistema visa facilitar o processo de coleta de dados e geração de relatório
 
 7. Inicie o servidor de produção:
    ```bash
-   npm build:prod
-   npm start:prod
+   npm run build:prod
+   npm run start:prod
    ```
