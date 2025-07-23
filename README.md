@@ -18,31 +18,36 @@ O sistema visa facilitar o processo de coleta de dados e geração de relatório
 ## Como Executar o Projeto
 
 ### Pré-requisitos
-- Node.js (18.19.1)
-- pnpm (10.3.0)
+- Node.js (22.14.0)
+- npm (11.3.0)
 
 ### Passos
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/Yoshifg/projeto_diagnostico_frontend.git
+   git clone https://github.com/hub-uem/acim_proj_diag_front.git
    ```
    
 2. Navegue até o diretório do projeto:
    ```bash
-   cd projeto_diagnostico_frontend
+   cd acim_proj_diag_front
    ```
    
 3. Instale as dependências:
    ```bash
-   pnpm install
+   npm install
    ```
 
-4. Crie um .env.local e adicione:
+4. Faça uma auditoria de segurança no projeto:
+   ```bash
+      npm audit fix
+   ```
+
+5. Crie um .env.local e adicione:
    ```bash
    NEXT_PUBLIC_HOST=http://localhost:8000
    ```
    
-5. Inicie o servidor de desenvolvimento:
+6. Inicie o servidor de desenvolvimento:
    ```bash
-   pnpm dev
+   npm run dev
    ```
