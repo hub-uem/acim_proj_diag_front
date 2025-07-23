@@ -7,7 +7,7 @@ export default function useResetPassword() {
 
     const [email, setEmail] = useState('');
 
-    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const onChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setEmail(event.target.value);
     };
 
@@ -17,10 +17,10 @@ export default function useResetPassword() {
         resetPassword(email)
             .unwrap()
             .then(() => {
-                toast.success('Request sent, check your email for reset link');
+                toast.success('Solicitação enviada, verifique seu e-mail para obter o link de redefinição');
             })
             .catch(() => {
-                toast.error('Failed to send request');
+                toast.error('Falha ao enviar solicitação');
             });
     };
 

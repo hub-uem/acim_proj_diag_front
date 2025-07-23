@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import cn from 'classnames';
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLElement> {
     isNavItem?: boolean;
     isSelected?: boolean;
     isMobile?: boolean;
@@ -9,16 +9,13 @@ interface Props {
     href?: string;
     onClick?: () => void;
     children: React.ReactNode;
-    [rest: string]: any;
 }
 
 export default function NavLink({
     isNavItem,
     isSelected,
-    isMobile,
     isBanner,
     href,
-    onClick,
     children,
     ...rest
 }: Props) {
@@ -45,8 +42,8 @@ export default function NavLink({
             href={href}
             className={className}
             onClick={() => {
-                if (onClick) {
-                    onClick();
+                if (rest.onClick) {
+                    rest.onClick();
                 }
             }}
         >

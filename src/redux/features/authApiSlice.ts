@@ -8,11 +8,6 @@ interface User {
     setor: string;
 }
 
-interface CreateUserResponse {
-    success: boolean;
-    user: User;
-}
-
 const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         retrieveUser: builder.query<User, void>({

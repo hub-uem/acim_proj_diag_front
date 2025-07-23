@@ -6,13 +6,11 @@ import { useCheckDeadlineQuery } from '@/redux/features/questionnaireApiSlice';
 import { useAsyncValue } from '@/hooks/index'; 
 
 
-type Props = {
-  params: { module: string } | Promise<{ module: string }>;
-}
+type Params = Promise< {module: string}>
 
-export default function Questionnaire({ params }: Props) {
+export default function Questionnaire(props: {params: Params}) {
 
-    const resolvedParams = useAsyncValue(params);
+    const resolvedParams = useAsyncValue(props.params);
 
     const { data, isLoading, error } = useCheckDeadlineQuery(resolvedParams?.module, {
         skip: !resolvedParams?.module,
