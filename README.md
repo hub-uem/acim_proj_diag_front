@@ -39,7 +39,7 @@ O sistema visa facilitar o processo de coleta de dados e geração de relatório
 
 4. Faça uma auditoria de segurança no projeto:
    ```bash
-      npm audit fix
+   npm audit fix
    ```
 
 5. Crie um .env.local e adicione:
@@ -47,12 +47,12 @@ O sistema visa facilitar o processo de coleta de dados e geração de relatório
    NEXT_PUBLIC_HOST=http://localhost:8000
    ```
    
-6. Inicie o servidor de desenvolvimento:
+6. Inicie o servidor de desenvolvimento (apenas para desenvolvedores):
    ```bash
    npm run dev
    ```
 
-7. Inicie o servidor de desenvolvimento:
+7. Inicie o servidor de produção:
    ```bash
    npm build:prod
    npm start:prod
