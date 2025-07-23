@@ -51,3 +51,9 @@ O sistema visa facilitar o processo de coleta de dados e geração de relatório
    ```bash
    npm run dev
    ```
+
+7. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm build:prod
+   npm start:prod
+   ```
