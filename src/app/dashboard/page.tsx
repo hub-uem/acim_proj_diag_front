@@ -31,7 +31,6 @@ export default function Dashboard(){
   const handleDownload = async (nomeModulo: string) => {
     try {
       const blob = await downloadReport(nomeModulo).unwrap();
-
       const url = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
       const link = document.createElement('a');
       link.href = url;
@@ -73,7 +72,7 @@ export default function Dashboard(){
             <option value="">Selecione uma data</option>
             {availableDates.map((date) => (
               <option key={date} value={date}>
-                {new Date(date).toLocaleDateString("pt-BR")}
+                {new Date(date + 'T00:00:00').toLocaleDateString('pt-BR')}
               </option>
             ))}
           </select>
@@ -96,7 +95,7 @@ export default function Dashboard(){
                 <div>{item.usuario}</div>
                 <div>{item.nome_modulo}</div>
                 <div>{item.valorFinal}</div>
-                <div>{item.dataResposta}</div>
+                <div>{new Date(item.dataResposta + 'T00:00:00').toLocaleDateString('pt-BR')}</div>
                 <div className='flex space-x gap-2 justify-end'>
                   <DropdownMenu item={item} handleDownload={handleDownload}/>
                 </div>
