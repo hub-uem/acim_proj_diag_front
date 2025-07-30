@@ -143,6 +143,16 @@ export default function Navbar() {
                     </div>
                     <DisclosurePanel transition className='origin-top transition duration-300 ease-out data-[closed]:-translate-y-4'>
                         <div className='flex flex-col items-center space-y-4 py-4 md:hidden'>
+                            <Image
+                                src="/home/logo-acim.webp"
+                                alt="Logo ACIM"
+                                width={120}
+                                height={60}
+                                style={{
+                                    objectFit: "cover",
+                                    objectPosition: "50% 40%",
+                                }}
+                            />
                             {navLinks(true, close)}
                             {isAuthenticated ? authLinks(true, close) : guestLinks(true, close)}
                         </div>
