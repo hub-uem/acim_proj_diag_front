@@ -1,0 +1,44 @@
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+
+export default function useSaveResponsesIncomplete() {
+    const [isSaving, setIsSaving] = useState(false);
+
+    const saveResponsesIncomplete = async (
+        moduleName: string,
+        currentDimension: { title: string; questions: { id: number }[] },
+        responses: Record<number, number>
+    ) => {
+        setIsSaving(true);
+
+        const payload = {
+            nomeModulo: decodeURIComponent(moduleName),
+            dimensaoTitulo: currentDimension.title,
+            respostas: currentDimension.questions.map((q) => ({
+                id: q.id,
+                valor: responses[q.id] ?? null,
+            })),
+        };
+
+        try {
+            await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/questionario/salvar-incompleta/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+                credentials: 'include',
+            });
+            toast.success('Respostas da dimensão salvas!');
+        } catch (error) {
+            toast.error('Erro ao salvar respostas incompletas');
+            console.error('Erro ao salvar respostas incompletas:', error);
+        } finally {
+            setIsSaving(false);
+        }
+    };
+
+    return { 
+        saveResponsesIncomplete, 
+        isSaving };
+    }
