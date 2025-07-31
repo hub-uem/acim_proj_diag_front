@@ -10,11 +10,9 @@ type Params = Promise< {module: string}>
 export default function Questionnaire(props: {params: Params}) {
 
     const resolvedParams = useAsyncValue(props.params);
-
     const { data, isLoading, error } = useCheckDeadlineQuery(resolvedParams?.module, {
         skip: !resolvedParams?.module,
     });
-
     return (
         <>
             <div className='min-h-screen bg-gradient-to-r from-teal via-teal-primary-opc to-teal-secundary flex items-center justify-center'>

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import {useSaveIncompleteMutation} from '@/redux/features/questionnaireApiSlice'
 
 export default function useSaveResponsesIncomplete() {
     const [isSaving, setIsSaving] = useState(false);
+    const [salvarIncompleta] = useSaveIncompleteMutation();
 
     const saveResponsesIncomplete = async (
         moduleName: string,
@@ -21,14 +23,7 @@ export default function useSaveResponsesIncomplete() {
         };
 
         try {
-            await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/questionario/salvar-incompleta/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload),
-                credentials: 'include',
-            });
+            await salvarIncompleta(payload).unwrap();
             toast.success('Respostas da dimensão salvas!');
         } catch (error) {
             toast.error('Erro ao salvar respostas incompletas');
@@ -40,5 +35,6 @@ export default function useSaveResponsesIncomplete() {
 
     return { 
         saveResponsesIncomplete, 
-        isSaving };
-    }
+        isSaving 
+    };
+}

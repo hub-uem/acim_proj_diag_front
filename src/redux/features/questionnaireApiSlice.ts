@@ -72,6 +72,15 @@ export interface ModuloRelatorio {
   media_dimensoes: Record<string, number>;
 }
 
+export interface SaveIncomplete {
+    nomeModulo: string;
+    dimensaoTitulo: string;
+    respostas: {
+        id: number; 
+        valor: number | null
+    }[];
+}
+
 export const questionnaireApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getQuestionnaires: builder.query<Dimensao[], void>({
@@ -110,6 +119,13 @@ export const questionnaireApiSlice = apiSlice.injectEndpoints({
         getViewRespostaModulo: builder.query<ModuloRelatorio, number>({
             query: (moduloId: number) => `/relatorio/modulo/?modulo_id=${moduloId}`
         }),
+        saveIncomplete: builder.mutation<void, SaveIncomplete> ({
+            query: (resposta) => ({
+                url: 'questionario/salvar-incompleta/',
+                method: 'POST',
+                body: resposta,
+            })
+        }),
 
     }),
 });
@@ -124,5 +140,6 @@ export const {
     useCheckDeadlineQuery,
     useGetRelatorioDatesQuery,
     useGetDimensoesQuery,
-    useGetViewRespostaModuloQuery
+    useGetViewRespostaModuloQuery,
+    useSaveIncompleteMutation,
 } = questionnaireApiSlice;

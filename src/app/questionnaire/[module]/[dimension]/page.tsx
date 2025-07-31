@@ -10,45 +10,54 @@ import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Page() {
     const { dimension: moduleName } = useParams();
-
-    const { data: moduleData, isLoading, isError } = useGetQuestionnaireByModuleQuery(moduleName as string, {
+    const { data: moduleData, isLoading, isError, refetch } = useGetQuestionnaireByModuleQuery(moduleName as string, {
         skip: !moduleName,
+        refetchOnMountOrArgChange: true
     });
-
     const [currentDimensionIndex, setCurrentDimensionIndex] = useState(0);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [showDescription, setShowDescription] = useState(true);
     const [showSubmit, setShowSubmit] = useState(false);
     const { responses, setResponses, handleResponseChange, handleSubmitResponses } = useSubmitResponses();
     const [completedIndices, setCompletedIndices] = useState<number[]>([]);
-    const { saveResponsesIncomplete, isSaving } = useSaveResponsesIncomplete();
+    const { saveResponsesIncomplete } = useSaveResponsesIncomplete();
 
     useEffect(() => {
-        if (moduleData) {
-            const respondidas = (moduleData as any).respondidas || [];
-            const indicesRespondidas = moduleData.dimensoes
-                .map((dim: any, idx: number) => respondidas.includes(dim.dimensaoTitulo) ? idx : null)
-                .filter((idx: number | null) => idx !== null) as number[];
-            setCompletedIndices(indicesRespondidas);
-
-            const respostasIncompletas = (moduleData as any).respostasIncompletas || {};
-            let respostasAntigas: Record<number, number> = {};
-            Object.values(respostasIncompletas).forEach((dim: any) => {
-                if (dim.respostas) {
-                    dim.respostas.forEach((r: any) => {
-                        const perguntaId = r.perguntaId ?? r.id;
-                        respostasAntigas[perguntaId] = r.valor;
-                    });
-                }
-            });
-            setResponses(respostasAntigas);
-
-            if (typeof (moduleData as any).nextDimensionIndex === 'number') {
-                setCurrentDimensionIndex((moduleData as any).nextDimensionIndex);
-                setCurrentQuestionIndex(0);
-                setShowDescription(true);
-            }
+        if (moduleName) {
+            refetch(); 
         }
+    }, [moduleName, refetch]);
+
+    useEffect(() => {
+
+        if (!moduleData) return;
+
+        const respondidas = (moduleData as any).respondidas || [];
+
+        const indicesRespondidas = moduleData.dimensoes
+            .map((dim: any, idx: number) => respondidas.includes(dim.dimensaoTitulo) ? idx : null)
+            .filter((idx: number | null) => idx !== null) as number[];
+
+        setCompletedIndices(indicesRespondidas);
+
+        const respostasIncompletas = (moduleData as any).respostasIncompletas || {};
+        let respostasAntigas: Record<number, number> = {};
+        Object.values(respostasIncompletas).forEach((dim: any) => {
+            if (dim.respostas) {
+                dim.respostas.forEach((r: any) => {
+                    const perguntaId = r.perguntaId ?? r.id;
+                    respostasAntigas[perguntaId] = r.valor;
+                });
+            }
+        });
+        setResponses(respostasAntigas);
+
+        if (typeof (moduleData as any).nextDimensionIndex === 'number') {
+            setCurrentDimensionIndex((moduleData as any).nextDimensionIndex);
+            setCurrentQuestionIndex(0);
+            setShowDescription(true);
+        }
+
     }, [moduleData]);
 
     if (isLoading) return <div>Loading...</div>;
