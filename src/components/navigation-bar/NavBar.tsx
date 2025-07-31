@@ -111,17 +111,29 @@ export default function Navbar() {
                                 {open ? <X size={24} /> : <Menu size={24} />}
                             </DisclosureButton>
                         </div>
-                        <div className='max-w-6xl mx-auto flex flex-1 sm:p-4 items-center justify-center md:justify-between'>
-                            <Image
-                                src="/home/logo-acim.webp"
-                                alt="Logo ACIM"
-                                width={120}
-                                height={60}
-                                style={{
-                                    objectFit: "cover",
-                                    objectPosition: "50% 40%",
-                                }}
-                            />
+                        <div className='max-w-6xl mx-auto flex flex-1 sm:p-4 items-end justify-center md:justify-between'>
+                            <div className='hidden md:block md:space-x-5 lg:space-x-12 bg'>
+                                <NavLink
+                                    href='/'
+                                    isBanner
+                                    onClick={() => {
+                                        close();
+                                    }}
+                                >
+                                    <Image
+                                        src="/home/logo-acim.webp"
+                                        alt="Logo ACIM"
+                                        width={120}
+                                        height={60}
+                                        style={{
+                                            objectFit: "cover",
+                                            objectPosition: "50% 40%",
+                                        }}
+                                    />
+                                </NavLink>
+                                
+                            </div>
+                            
                             <div className='flex flex-shrink-0'>
                                 <NavLink
                                     href='/'
@@ -143,6 +155,8 @@ export default function Navbar() {
                     </div>
                     <DisclosurePanel transition className='origin-top transition duration-300 ease-out data-[closed]:-translate-y-4'>
                         <div className='flex flex-col items-center space-y-4 py-4 md:hidden'>
+                            {navLinks(true, close)}
+                            {isAuthenticated ? authLinks(true, close) : guestLinks(true, close)}
                             <Image
                                 src="/home/logo-acim.webp"
                                 alt="Logo ACIM"
@@ -153,8 +167,6 @@ export default function Navbar() {
                                     objectPosition: "50% 40%",
                                 }}
                             />
-                            {navLinks(true, close)}
-                            {isAuthenticated ? authLinks(true, close) : guestLinks(true, close)}
                         </div>
                     </DisclosurePanel>
                 </>
