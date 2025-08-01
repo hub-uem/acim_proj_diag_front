@@ -33,8 +33,8 @@ export interface DimensaoIncompleta {
   respostas: RespostaModulo[] | void;
 }
 
-interface RespostaModulo {
-    perguntaId: number;
+export interface RespostaModulo {
+    id: number;
     valor: number;
 }
 

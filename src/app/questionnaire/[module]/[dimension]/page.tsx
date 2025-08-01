@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useSubmitResponses } from '@/hooks';
 import useSaveResponsesIncomplete from '@/hooks/use-save-responses-incomplete';
-import { useGetQuestionnaireByModuleQuery, useDownloadReportMutation, Dimensao, DimensaoIncompleta } from '@/redux/features/questionnaireApiSlice';
+import { useGetQuestionnaireByModuleQuery, useDownloadReportMutation, Dimensao, DimensaoIncompleta, RespostaModulo, Modulo} from '@/redux/features/questionnaireApiSlice';
 import { QuestionWithLikert } from '@/components/questionnaire';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -40,26 +40,25 @@ export default function Page() {
 
         setCompletedIndices(indicesRespondidas);
 
-        const respostasIncompletas = moduleData.respostasIncompletas || {};
-        console.log(moduleData)
+        const respostasIncompletas: DimensaoIncompleta = moduleData.respostasIncompletas || {};
         const respostasAntigas: Record<number, number> = {};
-        Object.values(respostasIncompletas).forEach((dim: any) => {
+        Object.values(respostasIncompletas).forEach((dim: DimensaoIncompleta) => {
             if (dim.respostas) {
-                dim.respostas.forEach((r: any) => {
-                    const perguntaId = r.perguntaId ?? r.id;
-                    respostasAntigas[perguntaId] = r.valor;
+                dim.respostas.forEach((r: RespostaModulo) => {
+                    const id = r.id ?? r.id;
+                    respostasAntigas[id] = r.valor;
                 });
             }
         });
         setResponses(respostasAntigas);
 
-        if (typeof (moduleData as any).nextDimensionIndex === 'number') {
-            setCurrentDimensionIndex((moduleData as any).nextDimensionIndex);
+        if (typeof (moduleData as Modulo).nextDimensionIndex === 'number') {
+            setCurrentDimensionIndex((moduleData as Modulo).nextDimensionIndex);
             setCurrentQuestionIndex(0);
             setShowDescription(true);
         }
 
-    }, [moduleData]);
+    }, [moduleData, setResponses]);
 
     if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error loading module data.</div>;
@@ -184,7 +183,7 @@ export default function Page() {
 
         const handleSubmitAndDownload = async () => {
             try {
-                await handleSubmitResponses(moduleName as string, (moduleData as any).respostasIncompletas);
+                await handleSubmitResponses(moduleName as string, (moduleData as Modulo).respostasIncompletas);
 
                 const blob = await downloadReport('Diagnóstico Organizacional').unwrap();
                 const url = window.URL.createObjectURL(blob);

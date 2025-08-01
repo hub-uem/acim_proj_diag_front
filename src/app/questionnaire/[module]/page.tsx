@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React from 'react';
+import { useEffect } from 'react';
 import { useCheckDeadlineQuery } from '@/redux/features/questionnaireApiSlice'; 
 import { useAsyncValue } from '@/hooks/index'; 
 
@@ -10,9 +11,18 @@ type Params = Promise< {module: string}>
 export default function Questionnaire(props: {params: Params}) {
 
     const resolvedParams = useAsyncValue(props.params);
-    const { data, isLoading, error } = useCheckDeadlineQuery(resolvedParams?.module, {
+    const { data, isLoading, error, refetch } = useCheckDeadlineQuery(resolvedParams?.module, {
         skip: !resolvedParams?.module,
+        refetchOnMountOrArgChange: true
     });
+
+    useEffect(() => {
+        if (data) {
+            refetch();
+        }
+    }, [data, refetch]);
+
+    
     return (
         <>
             <div className='min-h-screen bg-gradient-to-r from-teal via-teal-primary-opc to-teal-secundary flex items-center justify-center'>
