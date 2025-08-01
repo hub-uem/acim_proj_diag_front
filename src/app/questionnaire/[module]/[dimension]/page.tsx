@@ -8,6 +8,11 @@ import { useGetQuestionnaireByModuleQuery, useDownloadReportMutation, Dimensao, 
 import { QuestionWithLikert } from '@/components/questionnaire';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 
+interface CompletedIndex {
+  value: number;
+  savedAt: Date;
+}
+
 export default function Page() {
     const { dimension: moduleName } = useParams();
     const { data: moduleData, isLoading, isError, refetch } = useGetQuestionnaireByModuleQuery(moduleName as string, {
@@ -19,8 +24,13 @@ export default function Page() {
     const [showDescription, setShowDescription] = useState(true);
     const [showSubmit, setShowSubmit] = useState(false);
     const { responses, setResponses, handleResponseChange, handleSubmitResponses } = useSubmitResponses();
-    const [completedIndices, setCompletedIndices] = useState<number[]>([]);
+    const [completedIndices, setCompletedIndices] = useState<CompletedIndex[]>([]);
     const { saveResponsesIncomplete } = useSaveResponsesIncomplete();
+
+     const newCompletedIndex: CompletedIndex = {
+        value: currentDimensionIndex,
+        savedAt: new Date(),
+    };
 
     useEffect(() => {
         if (moduleName) {
@@ -37,8 +47,12 @@ export default function Page() {
             .map((dim, idx) => respondidas.includes(dim.dimensaoTitulo) ? idx : null)
             .filter((idx): idx is number => idx !== null);
         
+        const newCompletedIndices = indicesRespondidas.map(index => ({
+            value: index,
+            savedAt: new Date(), // Atribuímos a data atual a cada índice
+        }));
 
-        setCompletedIndices(indicesRespondidas);
+        setCompletedIndices(newCompletedIndices);
 
         const respostasIncompletas: DimensaoIncompleta = moduleData.respostasIncompletas || {};
         const respostasAntigas: Record<number, number> = {};
@@ -87,7 +101,14 @@ export default function Page() {
             currentDimension,
             responses
         );
-        setCompletedIndices((prev) => [...new Set([...prev, currentDimensionIndex])]);
+
+        setCompletedIndices((prev) => {
+            const existingValues = new Set(prev.map(item => item.value));
+            if (existingValues.has(newCompletedIndex.value)) {
+                return prev;
+            }
+            return [...prev, newCompletedIndex];
+        });
         setShowDescription(true);
     };
 
@@ -102,7 +123,13 @@ export default function Page() {
             setCurrentQuestionIndex(0);
             setShowDescription(true);
         } else if (currentDimensionIndex === totalDimensions - 1) {
-            setCompletedIndices((prev) => [...new Set([...prev, currentDimensionIndex])]);
+            setCompletedIndices((prev) => {
+                const existingValues = new Set(prev.map(item => item.value));
+                if (existingValues.has(newCompletedIndex.value)) {
+                    return prev;
+                }
+                return [...prev, newCompletedIndex];
+            });
             setShowSubmit(true);
         }
     };
@@ -114,7 +141,7 @@ export default function Page() {
             setCurrentQuestionIndex((prev) => prev - 1);
         } else if (currentDimensionIndex > 0) {
             const newIndex = currentDimensionIndex - 1;
-            setCompletedIndices((prev) => prev.filter((i) => i !== newIndex));
+            setCompletedIndices((prev) => prev.filter((item) => item.value !== newIndex));
             setCurrentDimensionIndex(newIndex);
             const previousDimension = dimensions[newIndex];
             if (previousDimension.questions.length > 0) {
@@ -250,26 +277,35 @@ export default function Page() {
                 <h2 className='text-3xl text-center mb-10 text-teal font-bold dark:text-white'>Histórico de preenchimento</h2>
                 <div className="space-y-4">
                 {dimensions.map((dimension, index) => {
-                    const isCurrent = index === currentDimensionIndex;
-                    const isCompleted = completedIndices.includes(index);
+                    const isCurrent = index === currentDimensionIndex;           
+                    const completedItem = completedIndices.find(item => item.value === index);
+                    const isCompleted = !!completedItem;
 
                     return (
-                    <div key={index} className="flex items-center justify-between">
-                        <p
-                        className={`text-xl font-semibold pb-2 border-b-2 flex-1 ${
-                            isCurrent
-                            ? 'text-white border-teal-white dark:text-teal-primary dark:border-teal-primary'
-                            : 'text-teal border-teal dark:text-white dark:border-white'
-                        }`}
-                        >
-                        {dimension.title}
-                        </p>
-                        {isCompleted && (
-                        <span className="ml-4 w-6 h-6 flex items-center justify-center rounded-full bg-teal text-white text-sm font-bold dark:bg-teal-primary">
-                            ✓
-                        </span>
-                        )}
-                    </div>
+                        <div key={index} className="flex items-center justify-between">
+                            <div className="flex-1">
+                                <p
+                                    className={`text-xl font-semibold pb-2 border-b-2 ${
+                                        isCurrent
+                                            ? 'text-white border-teal-white dark:text-teal-primary dark:border-teal-primary'
+                                            : 'text-teal border-teal dark:text-white dark:border-white'
+                                    }`}
+                                >
+                                    {dimension.title}
+                                </p>
+                                {completedItem && (
+                                    <p className="text-sm text-white mt-1 dark:text-gray-400">
+                                        Respondido em: {completedItem.savedAt.toLocaleDateString()}
+                                    </p>
+                                )}
+                            </div>
+                            
+                            {isCompleted && (
+                                <span className="ml-4 w-6 h-6 flex items-center justify-center rounded-full bg-teal text-white text-sm font-bold dark:bg-teal-primary">
+                                    ✓
+                                </span>
+                            )}
+                        </div>
                     );
                 })}
                 </div>
