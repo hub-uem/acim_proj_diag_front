@@ -6,20 +6,31 @@ interface Question {
     explicacao: string;
 }
 
-interface Dimensao {
+export interface Dimensao {
     id: number;
     dimensaoTitulo: string;
     descricao: string;
     perguntas: Question[];
 }
 
-interface Modulo {
+export interface Modulo {
     id: number;
     nome: string;
     descricao: string;
     perguntasQntd: number;
     tempo: number;
     dimensoes: Dimensao[];
+    respondidads: string[];
+    nextDimensionIndex: number;
+    respostasIncompletas: {
+        dimensao: string;
+        respostas: RespostaModulo[];
+    };
+}
+
+export interface DimensaoIncompleta {
+  dimensao: string;
+  respostas: RespostaModulo[] | void;
 }
 
 interface RespostaModulo {

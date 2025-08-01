@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useSubmitResponses } from '@/hooks';
 import useSaveResponsesIncomplete from '@/hooks/use-save-responses-incomplete';
-import { useGetQuestionnaireByModuleQuery, useDownloadReportMutation } from '@/redux/features/questionnaireApiSlice';
+import { useGetQuestionnaireByModuleQuery, useDownloadReportMutation, Dimensao, DimensaoIncompleta } from '@/redux/features/questionnaireApiSlice';
 import { QuestionWithLikert } from '@/components/questionnaire';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -32,16 +32,17 @@ export default function Page() {
 
         if (!moduleData) return;
 
-        const respondidas = (moduleData as any).respondidas || [];
-
-        const indicesRespondidas = moduleData.dimensoes
-            .map((dim: any, idx: number) => respondidas.includes(dim.dimensaoTitulo) ? idx : null)
-            .filter((idx: number | null) => idx !== null) as number[];
+        const respondidas = moduleData.respondidads
+        const indicesRespondidas = (moduleData.dimensoes as Dimensao[]) 
+            .map((dim, idx) => respondidas.includes(dim.dimensaoTitulo) ? idx : null)
+            .filter((idx): idx is number => idx !== null);
+        
 
         setCompletedIndices(indicesRespondidas);
 
-        const respostasIncompletas = (moduleData as any).respostasIncompletas || {};
-        let respostasAntigas: Record<number, number> = {};
+        const respostasIncompletas = moduleData.respostasIncompletas || {};
+        console.log(moduleData)
+        const respostasAntigas: Record<number, number> = {};
         Object.values(respostasIncompletas).forEach((dim: any) => {
             if (dim.respostas) {
                 dim.respostas.forEach((r: any) => {
