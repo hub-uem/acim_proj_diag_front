@@ -76,7 +76,7 @@ export default function Dashboard(){
             <option value="">Selecione uma data</option>
             {availableDates.map((date) => (
               <option key={date} value={date}>
-                {new Date(date).toLocaleDateString("pt-BR")}
+                {new Date(date + 'T00:00:00').toLocaleDateString('pt-BR')}
               </option>
             ))}
           </select>
@@ -92,35 +92,35 @@ export default function Dashboard(){
         {errorReport && <p className="text-red-500">Erro ao buscar relatórios.</p>}
 
         {report && report.length > 0 && (
-          <div className="p-2 sm:p-4 overflow-x-auto">
+          <div className="p-2 sm:p-4">
             {report.map((item, index) => (
               <div
                 key={index}
                 className="grid sm:grid-cols-5 border-t py-4 gap-2 sm:gap-4 items-start"
               >
                 <div>
-                  <div className=" sm:block text-xs font-bold text-black mb-1">
+                  <div className=" sm:block text-x font-bold text-teal-primary mb-1">
                     Usuário
                   </div>
                   <div className="text-base">{item.usuario}</div>
                 </div>
                 <div>
-                  <div className=" sm:block text-xs font-bold text-black mb-1">
+                  <div className=" sm:block text-x font-bold text-teal-primary mb-1">
                     Módulo
                   </div>
                   <div className="text-base">{item.nome_modulo}</div>
                 </div>
                 <div>
-                  <div className=" sm:block text-xs font-bold text-black mb-1">
+                  <div className=" sm:block text-x font-bold text-teal-primary mb-1">
                     Valor Final
                   </div>
                   <div className="text-base">{item.valorFinal}</div>
                 </div>
                 <div>
-                  <div className=" sm:block text-xs font-bold text-black mb-1">
+                  <div className=" sm:block text-x font-bold text-teal-primary mb-1">
                     Data Resposta
                   </div>
-                  <div className="text-base">{item.dataResposta}</div>
+                  <div className="text-base">{new Date(item.dataResposta + 'T00:00:00').toLocaleDateString('pt-BR')}</div>
                 </div>
                 <div className="flex justify-end items-center">
                   <DropdownMenu item={item} handleDownload={handleDownload} />

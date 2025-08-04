@@ -10,20 +10,19 @@ import { ResultadoDimensao, useGetDimensoesQuery } from "@/redux/features/questi
 
 const prefersDark = typeof window !== "undefined" && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-const margin = { top: 30, right: 60, bottom: 120, left: 40 };
+const margin = { top: 30, right: 40, bottom: 120, left: 40 };
 
 const tooltipStyles = {
   ...defaultStyles,
   border: "2px solid #F2F2F2",
   borderRadius: 6,
   color: "white",
-  padding: "10px",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.15)",
 };
 
 export default function BarChart() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 300, height: 400 });
+  const [dimensions, setDimensions] = useState({ width: 600, height: 400 });
 
   const { data: availableData = [] } = useGetDimensoesQuery();
 

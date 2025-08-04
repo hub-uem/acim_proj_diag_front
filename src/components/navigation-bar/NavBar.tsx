@@ -157,16 +157,24 @@ export default function Navbar() {
                         <div className='flex flex-col items-center space-y-4 py-4 md:hidden'>
                             {navLinks(true, close)}
                             {isAuthenticated ? authLinks(true, close) : guestLinks(true, close)}
-                            <Image
-                                src="/home/logo-acim.webp"
-                                alt="Logo ACIM"
-                                width={120}
-                                height={60}
-                                style={{
-                                    objectFit: "cover",
-                                    objectPosition: "50% 40%",
+                            <NavLink
+                                href='/'
+                                isBanner
+                                onClick={() => {
+                                    close();
                                 }}
-                            />
+                            >
+                                <Image
+                                    src="/home/logo-acim.webp"
+                                    alt="Logo ACIM"
+                                    width={120}
+                                    height={60}
+                                    style={{
+                                        objectFit: "cover",
+                                        objectPosition: "50% 40%",
+                                    }}
+                                />
+                            </NavLink>
                         </div>
                     </DisclosurePanel>
                 </>

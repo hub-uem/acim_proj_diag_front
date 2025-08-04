@@ -273,6 +273,16 @@ export default function Page() {
     return (
         <div className='flex flex-col min-h-screen p-4 pt-32 sm:p-8 sm:pt-36 md:flex-row md:p-12 md:pt-40 bg-bleached-silk dark:bg-teal-secundary gap-6'>
 
+            <div  className='flex flex-col items-center justify-center p-4 md:flex-1 mx-auto bg-teal-primary dark:bg-teal rounded-md border border-teal dark:border-black-wash'>
+                {showSubmit
+                ? <SubmitView />
+                : (showDescription
+                    ? <DescriptionView />
+                    : <QuestionView />
+                )
+                }
+            </div>
+
             <div className='flex flex-col justify-center bg-teal-primary border border-teal p-4 md:w-1/3 dark:bg-teal'>
                 <h2 className='text-3xl text-center mb-10 text-teal font-bold dark:text-white'>Histórico de preenchimento</h2>
                 <div className="space-y-4">
@@ -310,17 +320,7 @@ export default function Page() {
                 })}
                 </div>
             </div>
-
-            {/* Div do Conteúdo (Description, Question, Submit) */}
-            <div  className='flex flex-col items-center justify-center p-4 md:flex-1 mx-auto bg-teal-primary dark:bg-teal rounded-md border border-teal dark:border-black-wash'>
-                {showSubmit
-                ? <SubmitView />
-                : (showDescription
-                    ? <DescriptionView />
-                    : <QuestionView />
-                )
-                }
-            </div>
+  
         </div>
     );
 }

@@ -25,7 +25,7 @@ export default function Questionnaire(props: {params: Params}) {
     
     return (
         <>
-            <div className='min-h-screen bg-gradient-to-r from-teal via-teal-primary-opc to-teal-secundary flex items-center justify-center'>
+            <div className='min-h-screen bg-gradient-to-r from-teal via-teal-primary-opc to-teal-secundary flex items-center justify-center p-4 md:p-12'>
                 <div
                     className='pt-12 px-4 pb-20 md:p-16 md:pb-36 '>
                     <div
@@ -46,36 +46,35 @@ export default function Questionnaire(props: {params: Params}) {
                         </div>
 
                          {isLoading ? (
-                                <span className="text-bleached-silk">Verificando disponibilidade...</span>
-                            ) : error ? (
-                                <span className="text-red-500">Erro ao verificar o prazo.</span>
-                            ) : data?.ok_response ? (
-                                <div className='flex w-max h-max space-x-2 mx-auto items-center md:px-4 md:py-2 bg-brack-wash rounded-md border border-teal-primary'>
-                                    <a className='text-bleached-silk'>
-                                        Número de Questões
-                                    </a>
-                                    <div className='w-[1px] h-12 bg-teal-primary'></div>
-                                    <a className='text-bleached-silk'>
-                                        Tempo Estimado
-                                    </a>
-                                    <div className='w-[1px] h-12 bg-transparent md:bg-teal-primary'></div>
-                                    <Link
-                                        href='/questionnaire/x/Diagnóstico Organizacional'
-                                        className='block w-fit md:w-fit py-1 px-4 bg-teal-primary text-white font-semibold rounded-md hover:bg-teal-primary-opc'>
-                                        Iniciar Questionário
-                                    </Link>
-                                </div>
-                            ) : (
-                                <span className="text-center text-bleached-silk font-semibold border-b-2 border-teal-secundary">{data?.message}</span>
-                            )
-                        }
+                                 <span className="text-bleached-silk">Verificando disponibilidade...</span>
+                             ) : error ? (
+                                 <span className="text-red-500">Erro ao verificar o prazo.</span>
+                             ) : data?.ok_response ? (
+                                 <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center justify-center p-4 bg-brack-wash rounded-md border border-teal-primary'>
+                                    <div className="flex flex-col items-center">
+                                         <a className='text-bleached-silk font-semibold'>
+                                            Número de Questões
+                                         </a>
+                                    </div>
+                                    <div className='w-full md:w-[1px] h-[1px] md:h-12 bg-teal-primary'></div>
+                                    <div className="flex flex-col items-center">
+                                         <a className='text-bleached-silk font-semibold'>
+                                            Tempo Estimado
+                                         </a>
+                                     </div>
+                                     <div className='w-full md:w-[1px] h-[1px] md:h-10 bg-teal-primary'></div>
+                                     <Link
+                                         href='/questionnaire/x/Diagnóstico Organizacional'
+                                         className='block w-full text-center py-2 px-4 bg-teal-primary text-white font-semibold rounded-md hover:bg-teal-primary-opc'>
+                                         Iniciar Questionário
+                                     </Link>
+                                 </div>
+                             ) : (
+                                 <span className="text-center text-bleached-silk font-semibold border-b-2 border-teal-secundary">{data?.message}</span>
+                             )
+                         }
                     </div>
                 </div>
-                {/* <div className='p-12 max-w-4xl mx-auto'>
-                    <h1 className='text-2xl'>
-                        Conheça nossos outros questionários:
-                    </h1>
-                </div> */}
             </div >
         </>
     );
