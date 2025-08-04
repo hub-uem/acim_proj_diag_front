@@ -49,7 +49,7 @@ export default function Page() {
         
         const newCompletedIndices = indicesRespondidas.map(index => ({
             value: index,
-            savedAt: new Date(), // Atribuímos a data atual a cada índice
+            savedAt: new Date(), 
         }));
 
         setCompletedIndices(newCompletedIndices);
