@@ -76,7 +76,6 @@ export default function Dashboard(){
             {availableDates.map((date) => (
               <option key={date} value={date}>
                 {new Date(date + 'T00:00:00').toLocaleDateString('pt-BR')}
-                {new Date(date + 'T00:00:00').toLocaleDateString('pt-BR')}
               </option>
             ))}
           </select>
