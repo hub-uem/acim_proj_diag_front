@@ -31,7 +31,6 @@ export default function Dashboard(){
   const handleDownload = async (nomeModulo: string) => {
     try {
       const blob = await downloadReport(nomeModulo).unwrap();
-
       const url = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
       const link = document.createElement('a');
       link.href = url;
@@ -76,6 +75,7 @@ export default function Dashboard(){
             <option value="">Selecione uma data</option>
             {availableDates.map((date) => (
               <option key={date} value={date}>
+                {new Date(date + 'T00:00:00').toLocaleDateString('pt-BR')}
                 {new Date(date + 'T00:00:00').toLocaleDateString('pt-BR')}
               </option>
             ))}
