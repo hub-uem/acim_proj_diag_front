@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Menu, X } from 'lucide-react';
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
@@ -15,6 +15,7 @@ export default function Navbar() {
     const dispatch = useAppDispatch();
     const [logout] = useLogoutMutation();
     const { isAuthenticated } = useAppSelector(state => state.auth);
+    const router = useRouter();
 
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -34,6 +35,7 @@ export default function Navbar() {
             .unwrap()
             .then(() => {
                 dispatch(setLogout());
+                router.push('/');
             });
     };
 
