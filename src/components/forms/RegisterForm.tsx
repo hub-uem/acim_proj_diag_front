@@ -64,7 +64,7 @@ export default function RegisterForm() {
 			options: [
 				{ label: 'Comércio', value: 'COMERCIO' },
 				{ label: 'Indústria', value: 'INDUSTRIA' },
-				{ label: 'Serviço', value: 'SERVICIO' },
+				{ label: 'Serviços', value: 'SERVICO' },
 			],
 		},
 		{
