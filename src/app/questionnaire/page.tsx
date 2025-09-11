@@ -9,20 +9,20 @@ export default function QuestionnairePage() {
             questions: 10,
             estimatedTime: '15 minutos',
         },
-        {
-            id: 2,
-            title: 'Módulo 2: Estratégias de Mercado',
-            description: 'Explore estratégias para melhorar sua posição no mercado.',
-            questions: 12,
-            estimatedTime: '20 minutos',
-        },
-        {
-            id: 3,
-            title: 'Módulo 3: Gestão Financeira',
-            description: 'Aprenda a gerenciar melhor os recursos financeiros da sua empresa.',
-            questions: 15,
-            estimatedTime: '25 minutos',
-        },
+        // {
+        //     id: 2,
+        //     title: 'Módulo 2: Estratégias de Mercado',
+        //     description: 'Explore estratégias para melhorar sua posição no mercado.',
+        //     questions: 12,
+        //     estimatedTime: '20 minutos',
+        // },
+        // {
+        //     id: 3,
+        //     title: 'Módulo 3: Gestão Financeira',
+        //     description: 'Aprenda a gerenciar melhor os recursos financeiros da sua empresa.',
+        //     questions: 15,
+        //     estimatedTime: '25 minutos',
+        // },
     ];
 
     return (
