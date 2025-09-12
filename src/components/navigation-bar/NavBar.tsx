@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Menu, X } from 'lucide-react';
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
@@ -15,6 +15,7 @@ export default function Navbar() {
     const dispatch = useAppDispatch();
     const [logout] = useLogoutMutation();
     const { isAuthenticated } = useAppSelector(state => state.auth);
+    const router = useRouter();
 
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -34,6 +35,7 @@ export default function Navbar() {
             .unwrap()
             .then(() => {
                 dispatch(setLogout());
+                router.push('/');
             });
     };
 
@@ -44,6 +46,7 @@ export default function Navbar() {
         { name: 'Questionário', href: '/questionnaire' },
         { name: 'Contato', href: '/contact' },
         { name: 'Dashboard', href: '/dashboard' },
+        { name: 'Política de Privacidade', href: '/compliance' },
     ];
 
     const navLinks = (isMobile: boolean, close?: () => void) => (
@@ -134,7 +137,7 @@ export default function Navbar() {
                                 
                             </div>
                             
-                            <div className='flex flex-shrink-0'>
+                            <div className='flex flex-shrink-0 ml-6'>
                                 <NavLink
                                     href='/'
                                     isBanner
@@ -145,10 +148,10 @@ export default function Navbar() {
                                     Projeto Diagnóstico
                                 </NavLink>
                             </div>
-                            <div className='hidden md:block md:space-x-5 lg:space-x-12 bg'>
+                            <div className='hidden md:block md:space-x-5 lg:space-x-6 bg ml-8'>
                                 {navLinks(false)}
                             </div>
-                            <div className='hidden md:block'>
+                            <div className='hidden md:block ml-8'>
                                 {isAuthenticated ? authLinks(false) : guestLinks(false)}
                             </div>
                         </div>

@@ -21,7 +21,7 @@ export default function NavLink({
 }: Props) {
     const className = cn(
         rest.className,
-        'rounded-md font-semibold',
+        'rounded-md font-semibold whitespace-nowrap',
         {
             'dark:hover:text-teal-primary hover:text-teal-secundary': isNavItem,
             'text-teal-secundary dark:hover:text-teal-primary dark:text-teal-primary': isSelected,
