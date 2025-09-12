@@ -46,6 +46,7 @@ export default function Navbar() {
         { name: 'Questionário', href: '/questionnaire' },
         { name: 'Contato', href: '/contact' },
         { name: 'Dashboard', href: '/dashboard' },
+        { name: 'Política de Privacidade', href: '/compliance' },
     ];
 
     const navLinks = (isMobile: boolean, close?: () => void) => (
@@ -136,7 +137,7 @@ export default function Navbar() {
                                 
                             </div>
                             
-                            <div className='flex flex-shrink-0'>
+                            <div className='flex flex-shrink-0 ml-6'>
                                 <NavLink
                                     href='/'
                                     isBanner
@@ -147,10 +148,10 @@ export default function Navbar() {
                                     Projeto Diagnóstico
                                 </NavLink>
                             </div>
-                            <div className='hidden md:block md:space-x-5 lg:space-x-12 bg'>
+                            <div className='hidden md:block md:space-x-5 lg:space-x-6 bg ml-8'>
                                 {navLinks(false)}
                             </div>
-                            <div className='hidden md:block'>
+                            <div className='hidden md:block ml-8'>
                                 {isAuthenticated ? authLinks(false) : guestLinks(false)}
                             </div>
                         </div>
