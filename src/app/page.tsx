@@ -22,24 +22,6 @@ export default function Home() {
             title: 'Financeiro',
             description: 'Avalie a situação empresarial de sua empresa.',
         },
-        {
-            id: 4,
-            icon: <Building className='text-teal-primary font-semibold' />,
-            title: 'Organizacional',
-            description: 'Avalie a situação empresarial de sua empresa.',
-        },
-        {
-            id: 5,
-            icon: <LaptopMinimal className='text-teal-primary font-semibold' />,
-            title: 'Marketing',
-            description: 'Avalie a situação empresarial de sua empresa.',
-        },
-        {
-            id: 6,
-            icon: <BookOpen className='text-teal-primary font-semibold' />,
-            title: 'Financeiro',
-            description: 'Avalie a situação empresarial de sua empresa.',
-        },
     ];
 
     return (
@@ -82,7 +64,7 @@ export default function Home() {
                             <div className="text-justify py-8">
                                 <p className="text-gray-700 dark:text-gray-300">
                                     O <strong>Módulo de Questionário</strong> foi cuidadosamente elaborado por empresários especialistas ligados à
-                                    <strong> ACIM – Associação Comercial e Empresarial de Maringá</strong>. Com base em vivências reais do mercado e conhecimento prático acumulado ao longo de décadas, o conteúdo oferece uma análise estratégica e confiável para impulsionar sua empresa.
+                                    <strong> ACIM – Associação Comercial e Empresarial de Maringá</strong> em parceria com o <strong>Hub de Inovação e Fronteira - UEM</strong>. Com base em vivências reais do mercado e conhecimento prático acumulado ao longo de décadas, o conteúdo oferece uma análise estratégica e confiável para impulsionar sua empresa.
                                 </p>
                                 <p className="mt-4 text-gray-700 dark:text-gray-300">
                                     A ACIM é reconhecida como um dos pilares do empreendedorismo em Maringá, reunindo mais de 5.000 empresas em prol do desenvolvimento regional. A expertise dos seus associados garante que você tenha acesso a uma ferramenta feita por quem vive o dia a dia dos negócios.
