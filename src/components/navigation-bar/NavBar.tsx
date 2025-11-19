@@ -46,7 +46,7 @@ export default function Navbar() {
         { name: 'Questionário', href: '/questionnaire' },
         { name: 'Contato', href: '/contact' },
         { name: 'Dashboard', href: '/dashboard' },
-        { name: 'Política de Privacidade', href: '/compliance' },
+        { name: 'Privacidade', href: '/compliance' },
     ];
 
     const navLinks = (isMobile: boolean, close?: () => void) => (

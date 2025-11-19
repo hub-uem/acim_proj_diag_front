@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-    title: 'Projeto Diagnóstico | Política de Dados e Privacidade',
+    title: 'Projeto Diagnóstico | Privacidade',
 };
 
 export default function Compliance() {
